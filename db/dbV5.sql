@@ -39,7 +39,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`CATEGORIES` (
   `ID`              INT           NOT NULL  AUTO_INCREMENT,
-  `CATEGORIES`      VARCHAR(45)   NULL,
+  `CATEGORY`      VARCHAR(45)   NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -49,7 +49,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`SUB-CATEGORIES` (
   `ID`              INT           NOT NULL  AUTO_INCREMENT,
-  `SUB-CATEGORIES`  VARCHAR(45)   NOT NULL,
+  `SUB-CATEGORY`  VARCHAR(45)   NOT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
