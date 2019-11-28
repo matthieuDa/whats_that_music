@@ -39,7 +39,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`CATEGORIES` (
   `ID`              INT           NOT NULL  AUTO_INCREMENT,
-  `CATEGORY`      VARCHAR(45)   NULL,
+  `CATEGORY`        VARCHAR(45)   NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -49,7 +49,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`SUB-CATEGORIES` (
   `ID`              INT           NOT NULL  AUTO_INCREMENT,
-  `SUB-CATEGORY`  VARCHAR(45)   NOT NULL,
+  `SUB-CATEGORY`    VARCHAR(45)   NOT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -57,11 +57,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `whats_that_music`.`EXTRACTS -> CATEGORIES // SUB-CATEGORIES`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS_has_CATEGORIES/SUB-CATEGORIES` (
+CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS_has_(SUB)CATEGORIES` (
   `ID`              INT           NOT NULL  AUTO_INCREMENT,
   `EXTRACT`         INT           NOT NULL,
   `CATEGORY`        INT           NOT NULL,
-  `SUB-CATEGORY`    INT           NOT NULL,
+  `SUB-CATEGORY`    INT,
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_EXTRACTS_has_CATEGORIES_EXTRACTS1`
     FOREIGN KEY (`EXTRACT`)

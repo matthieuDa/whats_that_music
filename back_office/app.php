@@ -14,25 +14,45 @@
 		return $dbh;
 	}
 
-	function add_extract($name, $type, $artist, $cover, $mp3, $categories) {
+	function add_extract($name, $type, $artist, $cover, $mp3, $categories, $sub_categories) {
 		$dbh = db_connect();
 
 		return false;
 		if (!empty($name) || !empty($type) || !empty($artiste) || !empty($cover) || !empty($mp3) || !empty($categories)) {
 			return true;
 
-			# TABLE - EXTRACTS -----------------------------------------------------
-			$sql = "INSERT INTO extracts (name, type, artist, cover, mp3) VALUES (?, ?, ?, ?, ?)";
+			# TABLE - EXTRACTS -------------------------------------------------
+			$sql = "INSERT INTO EXTRACTS (name, type, artist, cover, mp3) VALUES (?, ?, ?, ?, ?)";
 			$stmt = $dbh->prepare($sql);
 			$stmt->execute([$name, $type, $artist, $cover, $mp3]);
 			
-			# TABLE - EXTRACTS CATEGORIES ------------------------------------------
+			# TABLE - EXTRACTS CATEGORIES --------------------------------------
 			for ($i = 0; $i <= strlen($categories); $i++) {
-				$sql = "INSERT INTO extracts_has_categories (categories) VALUES (?)";
+				$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (categories) VALUES (?)";
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute([$categories[$i]]);
 			}
+
+			# TABLE - EXTRACTS SUB-CATEGORIES ----------------------------------
+
+			# TABLE - EXTRACTS ARTIST ------------------------------------------
 		}
+	}
+
+	function add_category($name) {
+		$dbh = dbConnect();
+
+		# 
+		
+		# FIND ID OF THE NEW CATEGORY
+		$category = $dbh->query("SELECT * FROM CATEGORIES WHERE CATEGORY LIKE \"$name\"")->fetchAll();
+
+		echo "<h2>Résultat de la recherche</h2>\n";
+		echo "<ol>\n";
+		foreach ($dossier as $row) {
+		    echo "<li><a href='MPO_bilanEnergetique.php?dossier=".$row['id']."'>".$row['nom']."</a></li>\n\n";
+		}
+		return $id;
 	}
 
 ?>
