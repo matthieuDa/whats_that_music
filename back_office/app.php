@@ -14,29 +14,46 @@
 		return $dbh;
 	}
 
-	function add_extract($name, $type, $artist, $cover, $mp3, $categories, $sub_categories) {
+	function find_artistID() {}
+
+	function count_sql($table) {
+		$dbh = dbConnect();
+
+		$dossier = $dbh->query("SELECT COUNT(*) FROM $table")->fetchAll();
+		foreach ($dossier as $count) return $count;
+	}
+
+	function add_extract($name, $difficulty, $type, $artist, $cover, $mp3, $categories) {
 		$dbh = db_connect();
 
 		return false;
-		if (!empty($name) || !empty($type) || !empty($artiste) || !empty($cover) || !empty($mp3) || !empty($categories)) {
+		if (!empty($name) && !empty($difficulty) && !empty($type) && !empty($artist) && !empty($cover) && !empty($mp3) && !empty($categories)) {
 			return true;
 
 			# TABLE - EXTRACTS -------------------------------------------------
-			$sql = "INSERT INTO EXTRACTS (name, type, artist, cover, mp3) VALUES (?, ?, ?, ?, ?)";
+			$sql = "INSERT INTO EXTRACTS (NAME, DIFFICULTY, IMG, MP3) VALUES (?, ?, ?, ?)";
 			$stmt = $dbh->prepare($sql);
-			$stmt->execute([$name, $type, $artist, $cover, $mp3]);
+			$stmt->execute([$name, $difficulty, $cover, $mp3]);
 			
 			# TABLE - EXTRACTS CATEGORIES --------------------------------------
-			for ($i = 0; $i <= strlen($categories); $i++) {
-				$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (categories) VALUES (?)";
-				$stmt = $dbh->prepare($sql);
-				$stmt->execute([$categories[$i]]);
-			}
+			$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (CATEGORY) VALUES (?)";
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute([$categories[$i]]);
 
 			# TABLE - EXTRACTS SUB-CATEGORIES ----------------------------------
+			for ($i = 0; $i <= strlen($categories); $i++) {
+				$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (EXTRACT, SUB-CATEGORY) VALUES (?, ?)";
+				$stmt = $dbh->prepare($sql);
+				$stmt->execute([count_sql("EXTRACTS_has_(SUB)CATEGORIES"), $categories[$i]]);
+			}
 
 			# TABLE - EXTRACTS ARTIST ------------------------------------------
-		}
+			for ($i = 0; $i <= strlen($categories); $i++) {
+				$sql = "INSERT INTO EXTRACTS_has_ARTISTS (extract, artist) VALUES (?, ?)";
+				$stmt = $dbh->prepare($sql);
+				$stmt->execute([$categories[$i], ]);
+			}
+		}	
 	}
 
 	function add_category($name) {

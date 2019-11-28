@@ -5,10 +5,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema whats_that_music
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema whats_that_music
--- -----------------------------------------------------
 CREATE DATABASE whats_that_music;
 USE `whats_that_music` ;
 
@@ -17,9 +13,10 @@ USE `whats_that_music` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS` (
   `ID`              INT           NOT NULL  AUTO_INCREMENT,
-  `name`            VARCHAR(45)   NOT NULL,
-  `difficulty`      INT           NOT NULL,
-  `img`             VARCHAR(45)   NULL DEFAULT 'default link',
+  `NAME`            VARCHAR(45)   NOT NULL,
+  `DIFFICULTY`      INT           NOT NULL,
+  `IMG`             VARCHAR(45)   NULL DEFAULT 'default link',
+  'MP3'             INT,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -29,7 +26,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`ARTISTS` (
   `ID`              INT           NOT NULL  AUTO_INCREMENT,
-  `name`            VARCHAR(45)   NOT NULL,
+  `NAME`            VARCHAR(45)   NOT NULL,
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -60,7 +57,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS_has_(SUB)CATEGORIES` (
   `ID`              INT           NOT NULL  AUTO_INCREMENT,
   `EXTRACT`         INT           NOT NULL,
-  `CATEGORY`        INT           NOT NULL,
+  `CATEGORY`        INT,
   `SUB-CATEGORY`    INT,
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_EXTRACTS_has_CATEGORIES_EXTRACTS1`
