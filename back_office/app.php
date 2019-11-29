@@ -14,7 +14,12 @@
 		return $dbh;
 	}
 
-	function find_artistID() {}
+	function find_id_by_category($table, $name) {}
+		$dbh = dbConnect();
+
+		$dossier = $dbh->query("SELECT ID FROM $table WHERE CATEGORY = \"$name\"")->fetchAll();
+		foreach ($dossier as $id) return $id;
+	}
 
 	function count_sql($table) {
 		$dbh = dbConnect();
@@ -35,10 +40,10 @@
 			$stmt = $dbh->prepare($sql);
 			$stmt->execute([$name, $difficulty, $cover, $mp3]);
 			
-			# TABLE - EXTRACTS CATEGORIES --------------------------------------
-			$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (CATEGORY) VALUES (?)";
+			# TABLE - EXTRACTS TYPE --------------------------------------------
+			$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (EXTRACT, CATEGORY) VALUES (?, ?)";
 			$stmt = $dbh->prepare($sql);
-			$stmt->execute([$categories[$i]]);
+			$stmt->execute([count_sql('EXTRACTS'), find_id_by_category('EXTRACTS_has_(SUB)CATEGORIES', $categories[$i])]);
 
 			# TABLE - EXTRACTS SUB-CATEGORIES ----------------------------------
 			for ($i = 0; $i <= strlen($categories); $i++) {
@@ -66,8 +71,8 @@
 
 		echo "<h2>Résultat de la recherche</h2>\n";
 		echo "<ol>\n";
-		foreach ($dossier as $row) {
-		    echo "<li><a href='MPO_bilanEnergetique.php?dossier=".$row['id']."'>".$row['nom']."</a></li>\n\n";
+		foreach ($dossier as $id) {
+
 		}
 		return $id;
 	}
