@@ -14,10 +14,10 @@
 		return $dbh;
 	}
 
-	function find_id_by_category($table, $name) {}
+	function find_id_by_smt($table, $name, $compare_tool) {}
 		$dbh = dbConnect();
 
-		$dossier = $dbh->query("SELECT ID FROM $table WHERE CATEGORY = \"$name\"")->fetchAll();
+		$dossier = $dbh->query("SELECT ID FROM $table WHERE $compare_tool = \"$name\"")->fetchAll();
 		foreach ($dossier as $id) return $id;
 	}
 
@@ -43,7 +43,7 @@
 			# TABLE - EXTRACTS TYPE --------------------------------------------
 			$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (EXTRACT, CATEGORY) VALUES (?, ?)";
 			$stmt = $dbh->prepare($sql);
-			$stmt->execute([count_sql('EXTRACTS'), find_id_by_category('EXTRACTS_has_(SUB)CATEGORIES', $categories[$i])]);
+			$stmt->execute([count_sql('EXTRACTS'), find_id_by_stmt('CATEGORIES', $type, 'CATEGORY')]);
 
 			# TABLE - EXTRACTS SUB-CATEGORIES ----------------------------------
 			for ($i = 0; $i <= strlen($categories); $i++) {
@@ -54,19 +54,29 @@
 
 			# TABLE - EXTRACTS ARTIST ------------------------------------------
 			for ($i = 0; $i <= strlen($categories); $i++) {
-				$sql = "INSERT INTO EXTRACTS_has_ARTISTS (extract, artist) VALUES (?, ?)";
+				$sql = "INSERT INTO EXTRACTS_has_ARTISTS (EXTRACT, ARTIST) VALUES (?, ?)";
 				$stmt = $dbh->prepare($sql);
-				$stmt->execute([$categories[$i], ]);
+				$stmt->execute([count_sql('EXTRACTS'), find_id_by_stmt('ARTISTS', $artist, 'NAME')]);
 			}
 		}	
 	}
 
-	function add_category($name) {
+	function add_category($name, $cat) {
 		$dbh = dbConnect();
 
-		# 
+		if ($cat === true) {
+			# TABLE - EXTRACTS TYPE --------------------------------------------
+			$sql = "INSERT INTO CATEGORIES (NAME) VALUES (?)";
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute([$name]);
+		} else {
+			# TABLE - EXTRACTS TYPE --------------------------------------------
+			$sql = "INSERT INTO SUB-CATEGORIES (NAME) VALUES (?)";
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute([$name]);
+		}
 		
-		# FIND ID OF THE NEW CATEGORY
+		/*# FIND ID OF THE NEW CATEGORY
 		$category = $dbh->query("SELECT * FROM CATEGORIES WHERE CATEGORY LIKE \"$name\"")->fetchAll();
 
 		echo "<h2>Résultat de la recherche</h2>\n";
@@ -74,7 +84,7 @@
 		foreach ($dossier as $id) {
 
 		}
-		return $id;
+		return $id;*/
 	}
 
 ?>
