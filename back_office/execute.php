@@ -11,7 +11,7 @@ $row['type'] 		= $_GET['type'];
 $row['artist ']		= $_GET['artist'];
 $row['cover ']		= $_GET['cover'];
 $row['mp3'] 		= $_GET['mp3'];
-$row['categories'] 	= $_GET['categories'];
+# $row['categories'] 	= $_GET['categories'];
 foreach($_GET['categories'] as $row['categories']); //$recup[] = $valeur;
 
 
