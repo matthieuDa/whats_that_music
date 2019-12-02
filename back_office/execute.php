@@ -5,14 +5,14 @@
 include './app.php';
 
 // ---| RECUPERATION DATE - METHODE GET |---------------------------------------
-$row['name'] 		= $_GET['name'];
+/* $row['name'] 		= $_GET['name'];
 $row['difficulty'] 	= $_GET['difficulty'];
 $row['type'] 		= $_GET['type'];
 $row['artist ']		= $_GET['artist'];
 $row['cover ']		= $_GET['cover'];
 $row['mp3'] 		= $_GET['mp3'];
 # $row['categories'] 	= $_GET['categories'];
-foreach($_GET['categories'] as $row['categories']); //$recup[] = $valeur;
+foreach($_GET['categories'] as $row['categories']); //$recup[] = $valeur; */
 
 
 // ---| AJOUTER UN NOUVEL EXTRAIT |---------------------------------------------
@@ -27,4 +27,10 @@ function adding_new_extract() {
 	if (!empty($row['name']) && !empty($row['difficulty']) && !empty($row['type']) && !empty($row['artist ']) && !empty($row['cover ']) && !empty($row['mp3']) && !empty($row['categories']))
 		return add_extract($row);
 }
+
+# ---| FONCTION PROVISOIRE |----------------------------------------------------
+function test_create_extract() {
+	add_extract("Let's dance", 1, 'musique', 'David Bowie', 'https://p8.storage.canalblog.com/82/14/636073/119838918_o.jpg', 'lets_dance_Dbowie', ['1980', 'disco', 'rock', 'pop']);
+}
+test_create_extract();
 ?>

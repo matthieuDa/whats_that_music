@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS` (
   `ID`              INT           NOT NULL AUTO_INCREMENT,
   `NAME`            VARCHAR(45)   NOT NULL,
   `DIFFICULTY`      INT           NOT NULL,
-  `IMG`             VARCHAR(45)   NULL DEFAULT 'default link',
-  `MP3`             INT,
+  `IMG`             VARCHAR(255)  NULL DEFAULT 'default link',
+  `MP3`             VARCHAR(100),
   PRIMARY KEY (`ID`))
 ENGINE = InnoDB;
 
@@ -42,9 +42,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `whats_that_music`.`SUB-CATEGORIES`
+-- Table `whats_that_music`.`SUBCATEGORIES`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `whats_that_music`.`SUB-CATEGORIES` (
+CREATE TABLE IF NOT EXISTS `whats_that_music`.`SUBCATEGORIES` (
   `ID`              INT           NOT NULL AUTO_INCREMENT,
   `NAME`            VARCHAR(45)   NOT NULL,
   PRIMARY KEY (`ID`))
@@ -52,13 +52,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `whats_that_music`.`EXTRACTS -> CATEGORIES // SUB-CATEGORIES`
+-- Table `whats_that_music`.`EXTRACTS -> CATEGORIES // SUBCATEGORIES`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS_has_(SUB)CATEGORIES` (
   `ID`              INT           NOT NULL AUTO_INCREMENT,
   `EXTRACT_ID`      INT           NOT NULL,
   `CATEGORY_ID`     INT,
-  `SUB-CATEGORY_ID` INT,
+  `SUBCATEGORY_ID` INT,
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_EXTRACTS_has_CATEGORIES_EXTRACTS1`
     FOREIGN KEY (`EXTRACT_ID`)
@@ -70,9 +70,9 @@ CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS_has_(SUB)CATEGORIES` (
     REFERENCES `whats_that_music`.`CATEGORIES` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_EXTRACTS_has_CATEGORIES_SUB-CATEGORIES1`
-    FOREIGN KEY (`SUB-CATEGORY_ID`)
-    REFERENCES `whats_that_music`.`SUB-CATEGORIES` (`ID`)
+  CONSTRAINT `fk_EXTRACTS_has_CATEGORIES_SUBCATEGORIES1`
+    FOREIGN KEY (`SUBCATEGORY_ID`)
+    REFERENCES `whats_that_music`.`SUBCATEGORIES` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

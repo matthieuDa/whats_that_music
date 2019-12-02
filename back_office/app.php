@@ -15,8 +15,8 @@ function db_connect() {
 }
 
 # ---| RECHERCHE D'UN ID EN COMPARANT UNE DONNÉE |------------------------------
-function find_id_by_smt($table, $name, $compare_tool) {
-	$dbh = dbConnect(); #DATABASE CONNEXION
+function find_id_by_stmt($table, $name, $compare_tool) {
+	$dbh = db_connect(); #DATABASE CONNEXION
 
 	$dossier = $dbh->query("SELECT ID FROM $table WHERE $compare_tool = \"$name\"")->fetchAll();
 	foreach ($dossier as $id) return $id;
@@ -24,9 +24,9 @@ function find_id_by_smt($table, $name, $compare_tool) {
 
 # ---| RETURN THE NUMBER OF LINE IN SQL TABLE |---------------------------------
 function count_sql($table) {
-	$dbh = dbConnect(); #DATABASE CONNEXION
+	$dbh = db_connect(); #DATABASE CONNEXION
 
-	$dossier = $dbh->query("SELECT COUNT(*) FROM $table")->fetchAll();
+	$dossier = $dbh->query("SELECT COUNT(*) FROM $table")->fetch();
 	foreach ($dossier as $count) return $count;
 }
 
@@ -42,13 +42,13 @@ function add_extract($name, $difficulty, $type, $artist, $cover, $mp3, $categori
 	# TABLE - EXTRACTS TYPE ------------------------------------------
 	$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (EXTRACT, CATEGORY) VALUES (?, ?)";
 	$stmt = $dbh->prepare($sql);
-	$stmt->execute([count_sql('EXTRACTS'), find_id_by_stmt('CATEGORIES', $type, 'CATEGORY')]);
+	$stmt->execute([/*count_sql('EXTRACTS'), find_id_by_stmt('CATEGORIES', $type, 'CATEGORY')*/ 0, 0]);
 
 	# TABLE - EXTRACTS SUB-CATEGORIES --------------------------------
 	for ($i = 0; $i <= strlen($categories); $i++) {
 		$sql = "INSERT INTO EXTRACTS_has_(SUB)CATEGORIES (EXTRACT, SUB-CATEGORY) VALUES (?, ?)";
 		$stmt = $dbh->prepare($sql);
-		$stmt->execute([count_sql("EXTRACTS_has_(SUB)CATEGORIES"), $categories[$i]]);
+		$stmt->execute([/*count_sql("EXTRACTS_has_(SUB)CATEGORIES")*/ 0, $categories[$i]]);
 	}
 
 	# TABLE - EXTRACTS ARTIST ----------------------------------------
@@ -62,7 +62,7 @@ function add_extract($name, $difficulty, $type, $artist, $cover, $mp3, $categori
 # ---| SQL - ADD CAT / SUB-CAT / ARTIST |---------------------------------------	
 // $what = 'CATEGORIES' or 'SUB-CATEGORIES' or 'ARTISTS' but no 'EXTRACT'
 function add_element($name, $what) {
-	$dbh = dbConnect(); #DATABASE CONNEXION
+	$dbh = db_connect(); #DATABASE CONNEXION
 
 	# TABLE - CAT / SUB-CAT / ARTIST ---------------------------------
 	$sql = "INSERT INTO ".$what." (NAME) VALUES (?)";
@@ -73,7 +73,7 @@ function add_element($name, $what) {
 # ---| SQL - DELETE ELEMENT |---------------------------------------------------
 // $what = 'CATEGORIES' or 'SUB-CATEGORIES' or 'ARTISTS'
 function delete_element($ID, $what) {
-	$dbh = dbConnect(); #DATABASE CONNEXION
+	$dbh = db_connect(); #DATABASE CONNEXION
 
 	# TABLE - DELETE ---------------------------------
 	$sql = "DELETE FROM " . $what . " WHERE ID = " . $ID;
