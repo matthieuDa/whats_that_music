@@ -1,0 +1,53 @@
+.normale {
+    font-weight: normal;
+}
+
+h1
+{
+    color:red;
+    text-align: center;
+    text-decoration:underline;
+}
+
+h5
+{
+    color: red;
+    text-decoration: underline;
+    font-size: large;
+}
+
+.boutton_millieu
+{
+    text-align: center;
+    
+    text-decoration: underline;
+
+    
+}
+
+.souligner
+{
+    text-decoration:underline;
+    font-size: large;
+}
+
+.normale {
+    font-weight: 100;
+}
+
+.colcat
+{
+    color: dimgray;
+}
+
+.couleur-de-fond
+{
+    background-color: slategray;
+}
+
+/* couleurs de sous categories */
+h6
+{
+    color: yellowgreen;
+    text-align: center;
+}
