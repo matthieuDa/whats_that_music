@@ -22,17 +22,22 @@ function display_choices($action) {
 }
 
 function display_samples() {
-	// echo "<li><a href='./view/samples.php?id=\"" . $row_SAMPLES['ID'] . "\">" . $row_SAMPLES['NAME'] . "</a></li>";
+	$dbh = db_connect();
 
-	echo '<a href="./edit_samples?id='. $row['ID'] . '" id="search" class="list-group-item list-group-item-action">';
-	echo	'<div class="d-flex w-100 justify-content-between">';
-	echo		'<h5 class="mb-1">' . $row_SAMPLES['NAME'] . '</h5>';
-	echo		'<small>' . $row_SAMPLES['ID'] . '</small>';
-	echo	'</div>';
-	echo	'<p class="mb-1">' . $row_ARTISTS['ARTIST'] . '</p>';
-	echo	'<small>' . ucfirst($row_CATEGORIES['CATEGORY']) . '. ' . $row_SUBCATEGORIES['SUBCATEGORY'] . ', '; 
-	echo '.</small>';
-	echo '</a>';
+	// Affichage des dossiers existants
+	$samples = $dbh->query("SELECT * FROM SAMPLES")->fetchAll();
+
+	foreach ($samples as $row_SAMPLES) {
+		echo '<a href="./edit_samples?id='. $row_SAMPLES['ID'] . '" id="search" class="list-group-item list-group-item-action">';
+		echo	'<div class="d-flex w-100 justify-content-between">';
+		echo		'<h5 class="mb-1">' . $row_SAMPLES['NAME'] . '</h5>';
+		echo		'<small>' . $row_SAMPLES['ID'] . '</small>';
+		echo	'</div>';
+		echo	'<p class="mb-1">' . $row_ARTISTS['ARTIST'] . '</p>';
+		echo	'<small>' . ucfirst($row_CATEGORIES['CATEGORY']) . '. ' . $row_SUBCATEGORIES['SUBCATEGORY'] . ', '; 
+		echo '.</small>';
+		echo '</a>';
+	}
 }
 
 // ---| AJOUTER UN NOUVEL EXTRAIT |---------------------------------------------

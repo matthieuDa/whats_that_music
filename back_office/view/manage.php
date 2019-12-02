@@ -28,6 +28,9 @@
 		.search_label 	{	position 		: absolute 	; 
 							right 			: 5em       ; }
 		.card_margin_bt {	margin-bottom 	: 5em 		; }
+		/* .card_attachement { position 		: absolute	; 
+							right 			: 5em		;
+							margin-bottom 	: 5em		; } */ 
 	</style>
 
 	<!-- Bootstrap CSS -->
@@ -204,7 +207,7 @@
 	<?php
 		//display_samples();
 	?>
-	<!-- <a href="#" id="search" class="list-group-item list-group-item-action">
+	<a href="./edit.php?id=263" id="search" class="list-group-item list-group-item-action">
 		<div class="d-flex w-100 justify-content-between">
 			<h5 class="mb-1">Let's dance</h5>
 			<small>263</small>
@@ -212,7 +215,7 @@
 		<p class="mb-1">David Bowie</p>
 		<small>Musique. 1980, rock, pop.</small>
 	</a>
-	<a href="#" id="search" class="list-group-item list-group-item-action">
+	<a href="./edit.php?id=131" id="search" class="list-group-item list-group-item-action">
 		<div class="d-flex w-100 justify-content-between">
 			<h5 class="mb-1">Life on mars</h5>
 			<small class="text-muted">131</small>
@@ -220,14 +223,15 @@
 		<p class="mb-1">David Bowie</p>
 		<small class="text-muted">Musique. 1980, rock, pop.</small>
 	</a>
-	<a href="#" id="search" class="list-group-item list-group-item-action">
+	<a href="./edit.php?id=462" id="search" class="list-group-item list-group-item-action">
 		<div class="d-flex w-100 justify-content-between">
 			<h5 class="mb-1">Dernière danse</h5>
 			<small class="text-muted">462</small>
 		</div>
 		<p class="mb-1">Indila</p>
 		<small class="text-muted">Musique. Hit 2014, pop, variété française.</small>
-	</a> -->
+	</a>
+	<!-- <a href="#" class="card_attachement"><i class="fas fa-times fa-2x"></i></a> -->
 </div>
 
 <!---| FORM 2 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->
