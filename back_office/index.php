@@ -1,132 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <!-- Required meta tags -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>WTM - Back-office</title>
 
-  <!-- Perso universal CSS -->
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
+	<!-- Required meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- FontAwesome CSS -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Perso universal CSS -->
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- FontAwesome CSS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-  <!-- jQuery JS -->
-  <script src="jquery-3.4.1.min.js"></script>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<!-- jQuery JS -->
+	<script src="jquery-3.4.1.min.js"></script>
+
+	<style type="text/css">
+		.return_to_game { 	position 	: absolute	;
+							right 		: 1em		; }
+	</style>
 </head>
 <body>
-<div class="container" style="margin-top: 5em">
-	<form class="needs-validation" novalidate>
-	  <div class="form-row">
-	    <div class="col-md-4 mb-3">
-	      <label for="validationCustom01">Nom de l'extrait *</label>
-	      <input type="text" class="form-control" id="validationCustom01" placeholder="ex : Let's dance" required>
-	      <div class="valid-feedback">
-	        Okay !
-	      </div>
-	    </div>
-	    <div class="col-md-4 mb-3">
-	      <label for="validationCustom02">Artiste</label>
-	      <label class="" for="validationCustom02">Nouvel artiste</label>
-		  <input type="checkbox" onclick="document.getElementById('hidden_form').style.display = (this.checked? 'block':'none'); document.getElementById('hidden_form1').style.display = (this.unchecked? 'block':'none');" ... />
-	      <div class="dropdown" id="hidden_form1">
-		    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Séléctionner un artiste
-		    </button>
-		    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		      <a class="dropdown-item" value="id">Elvis Presley</a>
-		      <a class="dropdown-item" value="id">David Bowie</a>
-		      <a class="dropdown-item" value="id">Freddy Mercury</a>
-		      <a class="dropdown-item" value="id">Michael Jackson</a>
-		    </div>
-		  </div>
-	      <div class="valid-feedback">
-	        Okay !
-	      </div>
-	      <div id="hidden_form">
-		    <input type="text" class="form-control" id="validationCustom02" placeholder="ex : David Bowie" required>
-		    <div class="valid-feedback">
-		       Okay !
-		    </div>
-		  </div>
-	    </div>
-	    <div class="col-md-4 mb-3">
-	      <label for="validationCustomUsername">Username</label>
-	      <div class="input-group">
-	        <div class="input-group-prepend">
-	          <span class="input-group-text" id="inputGroupPrepend">@</span>
-	        </div>
-	        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-	        <div class="invalid-feedback">
-	          Please choose a username.
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="form-row">
-	    <div class="col-md-6 mb-3">
-	      <label for="validationCustom03">City</label>
-	      <input type="text" class="form-control" id="validationCustom03" required>
-	      <div class="invalid-feedback">
-	        Please provide a valid city.
-	      </div>
-	    </div>
-	    <div class="col-md-3 mb-3">
-	      <label for="validationCustom04">State</label>
-	      <select class="custom-select" id="validationCustom04" required>
-	        <option selected disabled value="">Choose...</option>
-	        <option>...</option>
-	      </select>
-	      <div class="invalid-feedback">
-	        Please select a valid state.
-	      </div>
-	    </div>
-	    <div class="col-md-3 mb-3">
-	      <label for="validationCustom05">Zip</label>
-	      <input type="text" class="form-control" id="validationCustom05" required>
-	      <div class="invalid-feedback">
-	        Please provide a valid zip.
-	      </div>
-	    </div>
-	  </div>
-	  <div class="form-group">
-	    <div class="form-check">
-	      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-	      <label class="form-check-label" for="invalidCheck">
-	        Agree to terms and conditions
-	      </label>
-	      <div class="invalid-feedback">
-	        You must agree before submitting.
-	      </div>
-	    </div>
-	  </div>
-	  <button class="btn btn-primary" type="submit">Submit form</button>
-	</form>
-</div>
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="./"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href='./view/manage.php?action=samples'>Samples <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href='./view/manage.php?action=categories'>Categories <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href='./view/manage.php?action=artists'>Artists <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href='./view/manage.php?action=albums'>Albums <span class="sr-only">(current)</span></a>
+				</li>
+				<li>
+					<a class="btn btn-primary return_to_game" href="./../" tabindex="-1" aria-disabled="true">What's that music ?!</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="jumbotron">
+		<h1 class="display-4">What's that music ?!</h1>
+		<p class="lead">Welcome on the dashboard, here you can add, edit or delete all the database elements.</p>
+		<p>To start choose an element on the navbar.</p>
+	</div>
 </body>
 </html>

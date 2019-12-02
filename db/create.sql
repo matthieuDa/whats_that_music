@@ -9,9 +9,9 @@ CREATE DATABASE whats_that_music;
 USE `whats_that_music` ;
 
 -- -----------------------------------------------------
--- Table `whats_that_music`.`EXTRACTS`
+-- Table `whats_that_music`.`SAMPLES`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS` (
+CREATE TABLE IF NOT EXISTS `whats_that_music`.`SAMPLES` (
   `ID`              INT           NOT NULL AUTO_INCREMENT,
   `NAME`            VARCHAR(45)   NOT NULL,
   `DIFFICULTY`      INT           NOT NULL,
@@ -52,25 +52,25 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `whats_that_music`.`EXTRACTS -> CATEGORIES // SUBCATEGORIES`
+-- Table `whats_that_music`.`SAMPLES -> CATEGORIES // SUBCATEGORIES`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS_has_(SUB)CATEGORIES` (
+CREATE TABLE IF NOT EXISTS `whats_that_music`.`ASSOCIATION` (
   `ID`              INT           NOT NULL AUTO_INCREMENT,
   `EXTRACT_ID`      INT           NOT NULL,
   `CATEGORY_ID`     INT,
-  `SUBCATEGORY_ID` INT,
+  `SUBCATEGORY_ID`  INT,
   PRIMARY KEY (`ID`),
-  CONSTRAINT `fk_EXTRACTS_has_CATEGORIES_EXTRACTS1`
+  CONSTRAINT `fk_SAMPLES_has_CATEGORIES_SAMPLES1`
     FOREIGN KEY (`EXTRACT_ID`)
-    REFERENCES `whats_that_music`.`EXTRACTS` (`ID`)
+    REFERENCES `whats_that_music`.`SAMPLES` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_EXTRACTS_has_CATEGORIES_CATEGORIES1`
+  CONSTRAINT `fk_SAMPLES_has_CATEGORIES_CATEGORIES1`
     FOREIGN KEY (`CATEGORY_ID`)
     REFERENCES `whats_that_music`.`CATEGORIES` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_EXTRACTS_has_CATEGORIES_SUBCATEGORIES1`
+  CONSTRAINT `fk_SAMPLES_has_CATEGORIES_SUBCATEGORIES1`
     FOREIGN KEY (`SUBCATEGORY_ID`)
     REFERENCES `whats_that_music`.`SUBCATEGORIES` (`ID`)
     ON DELETE NO ACTION
@@ -79,19 +79,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `whats_that_music`.`EXTRACTS -> ARTISTS`
+-- Table `whats_that_music`.`SAMPLES -> ARTISTS`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `whats_that_music`.`EXTRACTS_has_ARTISTS` (
+CREATE TABLE IF NOT EXISTS `whats_that_music`.`SAMPLES_ARTISTS` (
   `ID`              INT           NOT NULL AUTO_INCREMENT,
   `EXTRACT_ID`      INT           NOT NULL,
   `ARTIST_ID`       INT           NOT NULL,
   PRIMARY KEY (`ID`),
-  CONSTRAINT `fk_EXTRACTS_has_ARTISTS_EXTRACTS1`
+  CONSTRAINT `fk_SAMPLES_has_ARTISTS_SAMPLES1`
     FOREIGN KEY (`EXTRACT_ID`)
-    REFERENCES `whats_that_music`.`EXTRACTS` (`ID`)
+    REFERENCES `whats_that_music`.`SAMPLES` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_EXTRACTS_has_ARTISTS_ARTISTS1`
+  CONSTRAINT `fk_SAMPLES_has_ARTISTS_ARTISTS1`
     FOREIGN KEY (`ARTIST_ID`)
     REFERENCES `whats_that_music`.`ARTISTS` (`ID`)
     ON DELETE NO ACTION
