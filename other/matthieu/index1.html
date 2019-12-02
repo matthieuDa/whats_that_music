@@ -1,51 +1,46 @@
-     <html>
-    <head>
-	<link rel="stylesheet" href="./view/css/style.css">  <!--raccorde le css de "style.css"-->
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- CSS - style.css -->
+  <link rel="stylesheet" href="./view/css/style.css">
+
+  <!-- CSS - Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>\"WHAT'S THAT MUSIQUE ?!\"</title>
-    </head>
 
-    <body>
-        
-   <h1> <p> Bienvenue dans <strong>"WHAT'S THAT MUSIQUE ?!"</strong><br />
-    </p> </h1>
-<br />
-<br />
-<br />
-<br />
-<br />
-    
-    
-  <h5> <strong> Veuillez taper votre prénom :</strong> </h5><br />
-
-<!-- ---------------------------------------------------- CASE DE NOM ---------------------------------------------------------------------- -->
-<!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
-<!-- creer un boutton texte  -->
-<form action="./view/test 2.php" method="POST" >
-<p>
-   <h2 class="boutton_millieu"> <input type="text" name="prenom" />  
-    <input type="text" name="prenom1" />                            
-    <input type="text" name="prenom2" />
-    <input type="text" name="prenom3" />
-    <br />    
-    <br /> </h2>
+  <!-- ICON - Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
   
-</p>
-<!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
-<!-- ------------------------------------------ CATEGORIES ET SOUS CATEGORIE DEMUSIQUE ----------------------------------------------------- -->
+  <!-- JS - Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-<h5>
-       <strong> Veuillez choisir votre gategorie de musique souhaiter :</strong> </h5><br />
-	</h5>
-<br />
+  <title>What's that music</title>
+</head>
 
+<body>    
+  <h1>Whhat's that music ?!</h1>
 
- <!--creer un boutton select qui defile  -->
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- ---------------------------------------------------- GESTION DES JOUEURS --------------------------------------------------------------- -->
+  <h4>Ajout des joueurs</h4>
+  <label>Entrez les pseudos des joueurs :</label></br>
+  <form action="./view/test.php" method="POST">
+    <input type="text" name="pseudo[]"/>  
+    <input type="text" name="pseudo[]"/>                            
+    <input type="text" name="pseudo[]"/>
+    <input type="text" name="pseudo[]"/>
 
- <h2 class="boutton_millieu">
-  <input type="checkbox" onclick="show_category('films')" name="recc" value="Films">
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------ CATEGORIES ET SOUS CATEGORIE DE MUSIQUE ----------------------------------------------------- -->
+
+    </br>
+    <label>Veuillez choisir votre gategorie de musique souhaiter :</label>
+
+ <!-- creer un boutton select qui defile -->
+    <input type="checkbox" onclick="show_category('films')" name="recc" value="Films">
          
-   <label for="FILMS">FILMS</label></h2>
+   <label for="FILMS">FILMS</label>
 <h6><div id="films" style="display:none">
     <input type="checkbox" name="films[]" value="Comedie">Comedie
 	<input type="checkbox" name="films[]" value="Drame">Drame
@@ -350,14 +345,7 @@
 </div></h2> -->
 <br />
 <br />
-<div class="col">
-		    <button class="col btn btn-orange-moon btn-rounded">Valider
-			</button>
-		</div>
-<h2 class="boutton_millieu"><input type="submit" value="Valider" /></h2>
-<button type="button" class="btn btn-info btn-circle btn-xl"><<i class="fas fa-check"></i>></button>
-<br />
-
+<button type="button" class="btn btn-info btn-circle btn-xl"><i class="fas fa-check"></i></button>
 
     </form>
 
