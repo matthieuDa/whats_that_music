@@ -1,7 +1,7 @@
      <html>
     <head>
 	<link rel="stylesheet" href="./view/css/style.css">  <!--raccorde le css de "style.css"-->
-
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>\"WHAT'S THAT MUSIQUE ?!\"</title>
     </head>
 
@@ -70,7 +70,8 @@
 <input type="checkbox" onclick="show_category('series')" name="recc" value="series">
          
   <label for="SERIES">SERIES</label></h2>
-<div id="series" style="display:none">
+<h6><div id="series" style="display:none">
+
     <input type="checkbox" name="series[]" value="Comedie">Comedie
 	<input type="checkbox" name="series[]" value="Drame">Drame
 	<input type="checkbox" name="series[]" value="Romance">Romance
@@ -86,7 +87,7 @@
 	<input type="checkbox" name="films[]" value="Horreur">Horreur
 	<input type="checkbox" name="films[]" value="Biopic">Biopic
 	
-</div>
+</div></h6>
 <br />
 <br />
 
@@ -94,7 +95,7 @@
 <input type="checkbox" onclick="show_category('dessins anime/films d_animation')" name="recc" value="dessins anime/films d_animation">
          
 		 <label for="dessins anime/films d_animation">dessins anime/films d_animation</label></h2>
-	   <div id="dessins anime/films d_animation" style="display:none">
+	   <h6><div id="dessins anime/films d_animation" style="display:none">
 		   <input type="checkbox" name="dessins anime/films d_animation[]" value="Comedie">Comedie
 		   <input type="checkbox" name="dessins anime/films d_animation[]" value="Drame">Drame
 		   <input type="checkbox" name="dessins anime/films d_animation[]" value="Drame">Drame
@@ -112,7 +113,7 @@
            <input type="checkbox" name="dessins anime/films d_animation[]" value="Biopic">Biopic
 			
 		  
-	   </div>
+	   </div></h6>
 	   <br />
 	   <br />
 
@@ -120,7 +121,7 @@
  <input type="checkbox" onclick="show_category('Anime')" name="recc" value="Anime">
          
 		 <label for="Anime">Anime</label></h2>
-	   <div id="Anime" style="display:none">
+	   <h6><div id="Anime" style="display:none">
 		   <input type="checkbox" name="Anime[]" value="Comedie">Comedie
 		   <input type="checkbox" name="Anime[]" value="Drame">Drame
 		   <input type="checkbox" name="Anime[]" value="Drame">Drame
@@ -138,7 +139,7 @@
            <input type="checkbox" name="Anime[]" value="Biopic">Biopic
 			
 		  
-	   </div>
+	   </div></h6>
 	   <br />
 	   <br />
 
@@ -146,7 +147,7 @@
 	   <input type="checkbox" onclick="show_category('Jeux video')" name="recc" value="Jeux video">
          
 		 <label for="Jeux video">Jeux video</label></h2>
-	   <div id="Jeux video" style="display:none">
+	   <h6><div id="Jeux video" style="display:none">
 		   
 		   <input type="checkbox" name="Jeux video[]" value="Drame">Drame
 		   <input type="checkbox" name="Jeux video[]" value="Drame">Drame
@@ -167,7 +168,7 @@
 		   <input type="checkbox" name="Jeux video[]" value="Reflexion">Reflexion
 		   <input type="checkbox" name="Jeux video[]" value="Gestion/Strategie">Gestion/Strategie
 		   <input type="checkbox" name="Jeux video[]" value="Simulation sport">Simulation sport
-	   </div>
+	   </div></h6>
 	   <br />
 	   <br />
 
@@ -175,11 +176,11 @@
 	   <input type="checkbox" onclick="show_category('Musique')" name="recc" value="Musique">
          
 		 <label for="Musique">Musique</label></h2>
-	   <div id="Musique" style="display:none">
+	   <h6><div id="Musique" style="display:none">
 		   
 		   <input type="checkbox" name="Musique[]" value="IL n'y en a pas pour le moment">IL n'y en a pas pour le moment
  
-	   </div>
+	   </div></h6>
 	   <br />
 	   <br />
 
@@ -187,7 +188,7 @@
 	   <input type="checkbox" onclick="show_category('Publicite')" name="recc" value="Publicite">
          
 		 <label for="Publicite">Publicite</label></h2>
-	   <div id="Publicite" style="display:none">
+	   <h6><div id="Publicite" style="display:none">
 		   
 		   <input type="checkbox" name="Publicite[]" value="Parfumerie">Parfumerie
 		   <input type="checkbox" name="Publicite[]" value="Voitures">Voitures
@@ -195,7 +196,7 @@
 
 
  
-	   </div>
+	   </div></h6>
 	   <br />
 	   <br />
 
@@ -203,7 +204,7 @@
 	   <input type="checkbox" onclick="show_category('Emission TV')" name="recc" value="Emission TV">
          
 		 <label for="Emission TV">Emission TV</label></h2>
-	   <div id="Emission TV" style="display:none">
+	   <h6><div id="Emission TV" style="display:none">
 		   
 		   <input type="checkbox" name="Emission TV[]" value="Historique">Historique
 		   <input type="checkbox" name="Emission TV[]" value="Voitures">Voitures
@@ -211,7 +212,7 @@
 
 
  
-	   </div>
+	   </div></h6>
 	   <br />
 	   <br />
 
@@ -237,7 +238,49 @@
 <!-- -------------------------------------------------------- TEMPS DE MUSIQUE (SECONDE) ---------------------------------------------------- -->
 <h5><strong> Selectionner le temps de la musique (seconde):</strong></h5>
                                                             <!-- creer un bouton radio -->
-<h2 class="boutton_millieu"><div>
+
+															<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="drone" value="3" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox" value="3" disabled>
+</div>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="drone" value="5" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox" value="5" disabled>
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="drone" value="10" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox" value="10" disabled>
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="drone" value="15" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox" value="15" disabled>
+</div>
+
+
+</div>
+
+
+															<!-- <h2 class="boutton_millieu"><div>
   <input type="radio" id="3" name="drone" value="3"
          checked>
   <label for="3">3</label>
@@ -256,13 +299,43 @@
 <div>
   <input type="radio" id="15" name="drone" value="15">
   <label for="15">15</label>
-</div></h2>
+</div></h2> -->
 
 <!-- -------------------------------------------------------- CHOIX DU TITRE ------------ ---------------------------------------------------- -->
                                                    <!-- crer aussi un boutton radio -->
 <h5><strong> A trouve:</strong></h5>
 <h2 class="boutton_millieu"><div>
-  <input type="radio" id="L'artiste" name="trouve" value="L'artiste">
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="trouve" value="L'artiste" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox" value="L'artiste" disabled>
+</div>
+
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="trouve" value="Le Titre" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox" value="Le Titre" disabled>
+</div>
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="trouve" value="Le Titre + L'artiste" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox" value="Le Titre + L'artiste" disabled>
+</div>
+
+  <!-- <input type="radio" id="L'artiste" name="trouve" value="L'artiste">
   <label for="L'artiste">L'artiste</label>
 </div>
 
@@ -274,9 +347,16 @@
 <div>
   <input type="radio" id="Le titre + Artiste" name="trouve" value="Le titre + Artiste">
   <label for="Le titre + Artiste">Le titre + Artiste</label>
-</div></h2>
-
+</div></h2> -->
+<br />
+<br />
+<div class="col">
+		    <button class="col btn btn-orange-moon btn-rounded">Valider
+			</button>
+		</div>
 <h2 class="boutton_millieu"><input type="submit" value="Valider" /></h2>
+<button type="button" class="btn btn-info btn-circle btn-xl"><<i class="fas fa-check"></i>></button>
+<br />
 
 
     </form>
