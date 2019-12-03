@@ -45,7 +45,7 @@
 	<script src="jquery-3.4.1.min.js"></script>
 
 	<script>
-	function show_hide() {
+	function show_hide_new_artist() {
 		if (document.getElementById('new_artist').checked) {
 		    document.getElementById('hidden_select').style.display = 'none';
 			document.getElementById('hidden_text_input').style.display = 'block';
@@ -117,8 +117,8 @@
 
     	<div class="col-md-4 mb-3">
 	    	<label for="validationCustom02">Artist / Group</label>
-	    	<label class="form-check-label" style="margin-left: 33%">Nouvel artiste</label>
-			<input type="checkbox" id="new_artist" onclick="show_hide()"/>
+	    	<label class="form-check-label" style="margin-left: 33%">New artist</label>
+			<input type="checkbox" id="new_artist" onclick="show_hide_new_artist()"/>
       
 	      	<select class="custom-select" id="hidden_select">
 				<option selected>Select an artiste</option>
