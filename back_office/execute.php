@@ -21,7 +21,7 @@ function display_choices($action) {
 	echo 'Vous saoulez !';
 }
 
-function display_samples() {
+/*function display_samples() {
 	$dbh = db_connect();
 
 	// Affichage des dossiers existants
@@ -38,7 +38,7 @@ function display_samples() {
 		echo '.</small>';
 		echo '</a>';
 	}
-}
+}*/
 
 // ---| AJOUTER UN NOUVEL EXTRAIT |---------------------------------------------
 function adding_new_extract() {
@@ -51,7 +51,7 @@ function adding_new_extract() {
 	return false;
 	if (!empty($row['name']) && !empty($row['difficulty']) && !empty($row['type']) && !empty($row['artist ']) && !empty($row['cover ']) && !empty($row['mp3']) && !empty($row['categories']))
 		return add_extract($row);
-} // adding_new_extract();
+} //adding_new_extract();
 
 /* function test() {
 	echo '<h1>Test ok.</h1>';
@@ -59,7 +59,7 @@ function adding_new_extract() {
 # ---| FONCTION DE TEST |-------------------------------------------------------
 function test_create_extract() {
 	add_extract("Let's dance", 1, 'musique', 'David Bowie', 'https://p8.storage.canalblog.com/82/14/636073/119838918_o.jpg', 'lets_dance_Dbowie', ['1980', 'disco', 'rock', 'pop']);
-} // test_create_extract();
+} test_create_extract();
 
 function test_add_element() {
 	add_element('Rom1', 'ARTISTS');

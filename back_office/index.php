@@ -93,6 +93,26 @@
 		document.getElementById('artists')	 .style.display = 'none';
 		document.getElementById('albums')	 .style.display = 'block';
 	}
+
+	/*function search_samples() {
+		var samples = document.getElementsByClassName('search_samples');
+		console.log(samples);
+		/*var str = 'The quick brown fox jumps over the lazy dog.';
+
+		var words = str.split(' ');
+		console.log(words);
+
+
+		document.getElementsByClassName('search_samples').on('input',function(e) {
+     		var search_value = this.val();
+ 		});
+		var nb_samples = document.getElementById("nb_samples").value; 
+		for (let i = 0; i < nb_samples; i++) {
+			if (sample[i].search(search_value) == -1) { //La variable position reçoit la valeur 6, la chaîne contient cette sous-chaîne
+				document.getElementById('sample[' + sample[i] + ']').style.display = 'none';
+			}
+		}
+	}*/
   	</script>
 
   	 <!-- Perso PHP -->
@@ -225,7 +245,7 @@
 	      		<div class="invalid-feedback">Please select a valid state.</div>
       		</div>
     	</div>
-  	</div>
+  	</div></br>
   	<button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 <!---| FORM 1 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->
@@ -243,7 +263,7 @@
 <!---| FORM 2 - Start |---------------------------------------------------------------------------| FORM 1 - Start |--->
 <h5>Select a sample to edit it.</h5>
 
-<input type="text" class="form-control ds-input search" name="search" placeholder="ex : David Bowie">
+<input type="text" class="form-control ds-input search" id="search_sample" name="search" placeholder="ex : David Bowie">
 <ul class="list-group z1">
 	<?php
 		//display_samples();
@@ -253,26 +273,26 @@
 	<?php
 		//display_samples();
 	?>
-	<a href="./edit.php?id=263" id="search" class="list-group-item list-group-item-action">
+	<a href="./edit.php?id=1" id="id-1" class="list-group-item list-group-item-action search_samples">
 		<div class="d-flex w-100 justify-content-between">
-			<h5 class="mb-1">Let's dance</h5>
-			<small>263</small>
+			<h5 class="mb-1 search_samples">Let's dance</h5>
+			<small>1</small>
 		</div>
-		<p class="mb-1">David Bowie</p>
+		<p class="mb-1 search">David Bowie</p>
 		<small>Musique. 1980, rock, pop.</small>
 	</a>
-	<a href="./edit.php?id=131" id="search" class="list-group-item list-group-item-action">
+	<a href="./edit.php?id=2" id="id-2" class="list-group-item list-group-item-action search_samples">
 		<div class="d-flex w-100 justify-content-between">
-			<h5 class="mb-1">Life on mars</h5>
-			<small class="text-muted">131</small>
+			<h5 class="mb-1 search_samples">Life on mars</h5>
+			<small class="text-muted">2</small>
 		</div>
 		<p class="mb-1">David Bowie</p>
 		<small class="text-muted">Musique. 1980, rock, pop.</small>
 	</a>
-	<a href="./edit.php?id=462" id="search" class="list-group-item list-group-item-action">
+	<a href="./edit.php?id=3" id="id-3" class="list-group-item list-group-item-action search_samples">
 		<div class="d-flex w-100 justify-content-between">
-			<h5 class="mb-1">Dernière danse</h5>
-			<small class="text-muted">462</small>
+			<h5 class="mb-1 search_samples">Dernière danse</h5>
+			<small class="text-muted">3</small>
 		</div>
 		<p class="mb-1">Indila</p>
 		<small class="text-muted">Musique. Hit 2014, pop, variété française.</small>
@@ -330,7 +350,7 @@
 		  		<!-- <div class="card card_margin_bt"> -->
 		    		<div class="card-header card_margin_bt" id="headingTwo">
 		      			<h2 class="mb-0">
-		        		<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Edit or delete a category.</button>
+		        		<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Edit or delete a category</button>
 		      			</h2>
 		    		</div>
 		    		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
@@ -338,66 +358,85 @@
 <!---| FORM 2 - Start |---------------------------------------------------------------------------| FORM 1 - Start |--->
 <h5>Select a category to edit it.</h5>
 
-<input type="text" class="form-control ds-input search" name="search" placeholder="ex : David Bowie">
+<input type="hidden" id="nb_samples" value="3">
+<input type="text" id="search" class="form-control ds-input search" name="search" onchange="search_samples();" placeholder="ex : David Bowie">
 
 <div class="radiobtn">
-		<input type="checkbox" id="huey" name="category" value="huey" checked />
-		<label for="huey">Musics</label>
+	<a href="./view/manage.php?action=category&id=0"><label for="huey">Films</label></a>
+</div>
+
+<div class="radiobtn">
+	<a href="./view/manage.php?action=category&id=1"><label for="louie">Musics</label></a>
+</div>
+
+<!---| FORM 2 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->
+		      			</div>
+		    		</div>
+		  		</div>
+			</div>
+		</div>
 	</div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+<!--| id = artists |----------------------------| id = artists |----------------------------| id = artists |-->
+<!--------------------------------------------------------------------------------------------------------------------->
+
+	<div id="artists" style="display: none;">
+		<div class="jumbotron">
+			<h1 class="display-4">Categories editor</h1>
+			<p class="lead">Welcome on the categories editor, here you can modify the categories as you want, you can change the name, or remove from the database.</p>
+			<p>To edit, modify the form below as desired.</p>
+		</div>
+		<div class="container" style="margin-top: 3em;">
+			<?php // display_choices($_GET['action']); ?>
+			<h3>Select a button to show the right form.</h3>
+			<div class="accordion" id="accordionExample">
+		  		<div class="card">
+		    		<div class="card-header" id="headingOne">
+		      			<h2 class="mb-0">
+		        			<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Add a category</button>
+		      			</h2>
+		    		</div>
+		    		<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+		      			<div class="card-body">
+<!---| FORM 1 - Start |---------------------------------------------------------------------------| FORM 1 - Start |--->
+<h5>Complete this form to add a new sample in the library.</h5>
+
+<form class="needs-validation" novalidate>
+  	<div class="form-row">
+    	<div class="col-md-4 mb-3">
+    		<label for="validationCustom01">Name *</label>
+    		<input type="text" class="form-control" id="validationCustom01" placeholder="ex : Let's dance" required>
+    		<div class="valid-feedback">Okay !</div>
+    	</div>
+
+  	<button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+<!---| FORM 1 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->
+		      			</div>
+		    		</div>
+		  		</div>
+		  		<!-- <div class="card card_margin_bt"> -->
+		    		<div class="card-header card_margin_bt" id="headingTwo">
+		      			<h2 class="mb-0">
+		        		<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Edit or delete an artist</button>
+		      			</h2>
+		    		</div>
+		    		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+		      			<div class="card-body">
+<!---| FORM 2 - Start |---------------------------------------------------------------------------| FORM 1 - Start |--->
+<h5>Select an artist to edit it.</h5>
+
+<input type="hidden" id="nb_samples" value="3">
+<input type="text" id="search" class="form-control ds-input search" name="search" onchange="search_samples();" placeholder="ex : David Bowie">
+
 <div class="radiobtn">
-	<input type="checkbox" name="category" value="louie"/>
-	<label>Films</label>
+	<a href="./view/manage.php?action=artist&id=0"><label for="huey">Films</label></a>
 </div>
 
-<ul class="list-group z1">
-	<?php
-		//display_samples();
-	?>
-</ul>
-
-
-<!-- --- -->
-
-
-<h5>Select a sample to edit it.</h5>
-
-<input type="text" class="form-control ds-input search" name="search" placeholder="ex : David Bowie">
-<ul class="list-group z1">
-	<?php
-		//display_samples();
-	?>
-</ul>
-<div class="list-group">
-	<?php
-		//display_samples();
-	?>
-	<a href="./edit.php?id=263" id="search" class="list-group-item list-group-item-action">
-		<div class="d-flex w-100 justify-content-between">
-			<h5 class="mb-1">Let's dance</h5>
-			<small>263</small>
-		</div>
-		<p class="mb-1">David Bowie</p>
-		<small>Musique. 1980, rock, pop.</small>
-	</a>
-	<a href="./edit.php?id=131" id="search" class="list-group-item list-group-item-action">
-		<div class="d-flex w-100 justify-content-between">
-			<h5 class="mb-1">Life on mars</h5>
-			<small class="text-muted">131</small>
-		</div>
-		<p class="mb-1">David Bowie</p>
-		<small class="text-muted">Musique. 1980, rock, pop.</small>
-	</a>
-	<a href="./edit.php?id=462" id="search" class="list-group-item list-group-item-action">
-		<div class="d-flex w-100 justify-content-between">
-			<h5 class="mb-1">Dernière danse</h5>
-			<small class="text-muted">462</small>
-		</div>
-		<p class="mb-1">Indila</p>
-		<small class="text-muted">Musique. Hit 2014, pop, variété française.</small>
-	</a>
-	<!-- <a href="#" class="card_attachement"><i class="fas fa-times fa-2x"></i></a> -->
+<div class="radiobtn">
+	<a href="./view/manage.php?action=artist&id=1"><label for="louie">Musics</label></a>
 </div>
-
 
 <!---| FORM 2 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->
 		      			</div>
@@ -406,6 +445,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- <div id="artists" style="display: none;">
 		<h1>123d;c,lkpojerhiugvzybdfhijno</h1>
 	</div> -->
@@ -422,6 +462,22 @@
 				}, 1000);
 			}
 		});
+
+
+
+		var samples = document.getElementsByClassName('search_samples');
+		$("#search_sample").on("keypress",function() {
+			alert('lolilol ' + $("#nb_samples") /*.split(' ');*/ + ' lolilol');
+			var samples = $("#nb_samples").split(' ');
+			alert(samples.length);
+			for (var i = 1; i <= samples.length; i++) {
+				alert("Hello! I am an alert box!!");
+				if ($(".search_samples").toLowerCase !== samples.toLowerCase()) {
+					alert("Hello! I'm the 'if' !!");
+					$(this).parent().parent().find("#id-" + i).hide();
+				}
+			}
+		})
 	</script>
 </body>
 </html>
