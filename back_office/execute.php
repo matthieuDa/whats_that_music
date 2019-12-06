@@ -59,7 +59,7 @@ function adding_new_extract() {
 # ---| FONCTION DE TEST |-------------------------------------------------------
 function test_create_extract() {
 	add_extract("Let's dance", 1, 'musique', 'David Bowie', 'https://p8.storage.canalblog.com/82/14/636073/119838918_o.jpg', 'lets_dance_Dbowie', ['1980', 'disco', 'rock', 'pop']);
-} test_create_extract();
+} // test_create_extract();
 
 function test_add_element() {
 	add_element('Rom1', 'ARTISTS');

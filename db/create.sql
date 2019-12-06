@@ -56,12 +56,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `whats_that_music`.`ASSOCIATION` (
   `ID`              INT           NOT NULL AUTO_INCREMENT,
-  `EXTRACT_ID`      INT           NOT NULL,
+  `SAMPLE_ID`       INT           NOT NULL,
   `CATEGORY_ID`     INT,
   `SUBCATEGORY_ID`  INT,
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_SAMPLES_has_CATEGORIES_SAMPLES1`
-    FOREIGN KEY (`EXTRACT_ID`)
+    FOREIGN KEY (`SAMPLE_ID`)
     REFERENCES `whats_that_music`.`SAMPLES` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,

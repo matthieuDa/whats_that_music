@@ -21,9 +21,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-	<!-- jQuery JS -->
-	<script src="jquery-3.4.1.min.js"></script>
-
 	<style type="text/css">
 		.return_to_game { 	position 		: absolute	;
 							right 			: 1em		; }
@@ -94,6 +91,18 @@
 		document.getElementById('albums')	 .style.display = 'block';
 	}
 
+	function $_GET(param) {
+		var vars = {};
+		window.location.href.replace( location.hash, '' ).replace( 
+			/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+			function( m, key, value ) {  // callback
+				vars[key] = value !== undefined ? value : '';
+			}
+		);
+
+		if ( param ) return vars[param] ? vars[param] : null;	
+		return vars;
+	} var $_GET = $_GET();
 	/*function search_samples() {
 		var samples = document.getElementsByClassName('search_samples');
 		console.log(samples);
@@ -116,7 +125,7 @@
   	</script>
 
   	 <!-- Perso PHP -->
-	<?php include './../execute.php'; ?>
+	<?php include './execute.php'; ?>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -263,7 +272,7 @@
 <!---| FORM 2 - Start |---------------------------------------------------------------------------| FORM 1 - Start |--->
 <h5>Select a sample to edit it.</h5>
 
-<input type="text" class="form-control ds-input search" id="search_sample" name="search" placeholder="ex : David Bowie">
+<input type="text" class="form-control ds-input search" id="search_sample" value="" name="search" placeholder="ex : David Bowie">
 <ul class="list-group z1">
 	<?php
 		//display_samples();
@@ -273,12 +282,12 @@
 	<?php
 		//display_samples();
 	?>
-	<a href="./edit.php?id=1" id="id-1" class="list-group-item list-group-item-action search_samples">
+	<a href="./edit.php?id=1" name="Let's dance" id="id-1" class="list-group-item list-group-item-action search_samples"><!-- ,david bowie,musique,1980,rock,pop-->
 		<div class="d-flex w-100 justify-content-between">
 			<h5 class="mb-1 search_samples">Let's dance</h5>
 			<small>1</small>
 		</div>
-		<p class="mb-1 search">David Bowie</p>
+		<p class="mb-1">David Bowie</p>
 		<small>Musique. 1980, rock, pop.</small>
 	</a>
 	<a href="./edit.php?id=2" id="id-2" class="list-group-item list-group-item-action search_samples">
@@ -297,6 +306,11 @@
 		<p class="mb-1">Indila</p>
 		<small class="text-muted">Musique. Hit 2014, pop, variété française.</small>
 	</a>
+	
+	<?php 
+		include './display.php'; 
+		display();
+	?>
 	<!-- <a href="#" class="card_attachement"><i class="fas fa-times fa-2x"></i></a> -->
 </div>
 
@@ -427,7 +441,7 @@
 <!---| FORM 2 - Start |---------------------------------------------------------------------------| FORM 1 - Start |--->
 <h5>Select an artist to edit it.</h5>
 
-<input type="hidden" id="nb_samples" value="3">
+<input type="hidden" id="nb_artists" value="3">
 <input type="text" id="search" class="form-control ds-input search" name="search" onchange="search_samples();" placeholder="ex : David Bowie">
 
 <div class="radiobtn">
@@ -441,10 +455,12 @@
 <!---| FORM 2 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->
 		      			</div>
 		    		</div>
-		  		<!-- </div> -->
+		  		</div>
 			</div>
 		</div>
 	</div>
+	<h1 class="display-4" id="add_ok" style="display: none; margin: 1em;">Ajout effectué avec succès.</h1>
+	<h1 class="display-4" id="add_bad" style="display: none; margin: 1em;">Erreur lors de l'ajout, veuillez rééssayer.</h1>
 
 	<!-- <div id="artists" style="display: none;">
 		<h1>123d;c,lkpojerhiugvzybdfhijno</h1>
@@ -452,7 +468,7 @@
 
 	<script>
 		// Focus the extended field after click
-		$(".radiobtn").on("click", "label", function() {
+		/* $(".radiobtn").on("click", "label", function() {
 			var isExtended = $(this)
 				.parent(".radiobtn")
 				.find(".extended");
@@ -461,23 +477,37 @@
 					isExtended.find("textarea").focus();
 				}, 1000);
 			}
-		});
+		}); */
 
+/*
 
-
-		var samples = document.getElementsByClassName('search_samples');
-		$("#search_sample").on("keypress",function() {
-			alert('lolilol ' + $("#nb_samples") /*.split(' ');*/ + ' lolilol');
-			var samples = $("#nb_samples").split(' ');
-			alert(samples.length);
-			for (var i = 1; i <= samples.length; i++) {
-				alert("Hello! I am an alert box!!");
-				if ($(".search_samples").toLowerCase !== samples.toLowerCase()) {
-					alert("Hello! I'm the 'if' !!");
-					$(this).parent().parent().find("#id-" + i).hide();
+		// var samples = document.getElementsByClassName('search_samples');
+		$("#search_sample").on("keyup",function() {
+			// var samples = $("h5.search_samples").split(' ');
+			// var sample;
+			// var samples    = Array.from($("h5.search_samples")).map(el => el.innerText);
+			// var samples_id = Array.from($("small.search_samples")).map(el => el.innerText);
+			var samples = $('h5.search_samples').map(function() {
+				return  $(this).text();
+			});
+// ---------------------------------------------------------------------------------------------------------------------
+			var value_search_input = $('#search_sample').val(); // $("#search_sample").html($(this).val()); //NMP, pk ? ------------------------------
+			console.log(typeof value_search_input);
+			var sample;
+// ---------------------------------------------------------------------------------------------------------------------
+			for (var i = 0; i < samples.length; i++) {
+				// alert("Hello! I am an alert box!!");
+				sample = samples[i];
+				if (sample.indexOf(value_search_input) < 0) {
+					$('a [name="'+sample+'"]'@).attr('tgyfgccr');
 				}
 			}
 		})
+*/		if ($_GET['action'] == 'new_sample') {
+			document.getElementById('add_ok')	.style.display = 'block';
+		} else if ($_GET['action'] == 'new_sample_error') {
+			document.getElementById('add_bad')	.style.display = 'block';
+		}
 	</script>
 </body>
 </html>
