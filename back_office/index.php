@@ -3,41 +3,52 @@
 <head>
 	<title>WTM - Back-office</title>
 
-	<!-- Required meta tags -->
+	<!-- Required meta tags --------------------------------------------------->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Radio button CSS -->
+	<!-- Radio button CSS ----------------------------------------------------->
 	<link rel="stylesheet" type="text/css" href="./../view/CSS/radio.css">
 
-	<!-- FontAwesome CSS -->
+	<!-- FontAwesome CSS ------------------------------------------------------>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-	<!-- Bootstrap CSS -->
+	<!-- Bootstrap CSS -------------------------------------------------------->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<!-- Bootstrap JS -->
+	<!-- Bootstrap JS --------------------------------------------------------->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+	<!-- React JS ------------------------------------------------------------->
+	<script src="https://fb.me/react-0.14.3.js"></script>
+	<script src="https://fb.me/react-dom-0.14.3.js"></script>
+
+
 	<style type="text/css">
-		.return_to_game { 	position 		: absolute	;
-							right 			: 1em		; }
-		h3				{	padding-bottom 	: 1em 		;
-							text-align 		: center 	; }
-		h5				{	padding-bottom 	: 1em		; }
-		.search 		{	max-width 		: 17em		;
-							position 		: absolute	; 
-							right 			: 1em 		;
-							top 			: 5em 		; }
-		.search_label 	{	position 		: absolute 	; 
-							right 			: 5em       ; }
-		.card_margin_bt {	margin-bottom 	: 5em 		; }
-		/* .card_attachement { position 		: absolute	; 
-							right 			: 5em		;
-							margin-bottom 	: 5em		; } */ 
-		.cursor			{	cursor 			: pointer 	; }
+		.return_to_game { 	position 		: absolute			;
+							right 			: 1em				; }
+		h3				{	padding-bottom 	: 1em 				;
+							text-align 		: center 			; }
+		h5				{	padding-bottom 	: 1em				; }
+		li 				{ 	display 		: inline-block  	; }
+		.search 		{	max-width 		: 17em				;
+							position 		: absolute			; 
+							right 			: 1em 				;
+							top 			: 5em 				; }
+		.search_label 	{	position 		: absolute 			; 
+							right 			: 5em       		; }
+		.card_margin_bt {	margin-bottom 	: 5em 				; }
+		/* .card_attachement { position 		: absolute			; 
+							right 			: 5em				;
+							margin-bottom 	: 5em				; } */ 
+		.cursor			{	cursor 			: pointer 			; }
+		.post:hover a 	{	color 			: #cc04c2 			;
+							background-color: #000000			; }
+		.jumbotron 		{ 	background-color: #2e7c7c  			;
+							color 			: white				; }
+		.no_radius 		{ 	border-radius 	: none 				; }
 	</style>
 
 	<script>
@@ -125,7 +136,10 @@
   	</script>
 
   	 <!-- Perso PHP -->
-	<?php include './execute.php'; ?>
+	<?php 
+		//include './execute.php';
+		include './display.php'; 
+	?>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -308,8 +322,7 @@
 	</a>
 	
 	<?php 
-		include './display.php'; 
-		display();
+		// display_samples();
 	?>
 	<!-- <a href="#" class="card_attachement"><i class="fas fa-times fa-2x"></i></a> -->
 </div>
@@ -444,12 +457,28 @@
 <input type="hidden" id="nb_artists" value="3">
 <input type="text" id="search" class="form-control ds-input search" name="search" onchange="search_samples();" placeholder="ex : David Bowie">
 
-<div class="radiobtn">
-	<a href="./view/manage.php?action=artist&id=0"><label for="huey">Films</label></a>
-</div>
-
-<div class="radiobtn">
-	<a href="./view/manage.php?action=artist&id=1"><label for="louie">Musics</label></a>
+<div class="card" style="width: 18rem;">
+  	<ul class="list-group list-group-flush">
+	    <li class="list-group-item">
+	    	<p class="cursor" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseExample">
+	    		David Bowie
+	    		<span class="badge badge-primary badge-pill">14</span>
+	    		<a href="edit.php?action=artist"><i class="fas fa-edit"></i></a>
+	    	</p>
+	    	<div class="collapse" id="collapse1">
+    			Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  			</div>
+	    </li>
+	    <li class="list-group-item">
+	    	<p class="cursor" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    			David Bowie
+				<i class="fas fa-sort-down fa-2x"></i>
+  			</p>
+  			<div class="collapse" id="collapseExample">
+    			Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  			</div>
+		</li>
+  	</ul>
 </div>
 
 <!---| FORM 2 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->

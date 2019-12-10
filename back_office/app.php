@@ -15,16 +15,10 @@ function db_connect() {
 }
 
 # ---| RECHERCHE D'UN ID EN COMPARANT UNE DONNÉE |-----------------------------|
-/* function find_id_by_stmt($table, $name, $compare_tool) {
-	$dbh = db_connect(); #DATABASE CONNEXION
-
-	$dossier = $dbh->query("SELECT ID FROM $table WHERE $compare_tool = \"$name\"")->fetchAll();
-	foreach ($dossier as $id) return $id;
-} */
 function find_id_by_stmt($table, $name, $compare_tool) {
 	$dbh = db_connect(); #DATABASE CONNEXION
 
-    $result = $bdd->prepare('SELECT ID FROM $table WHERE $compare_tool = :name;');
+    $result = $bdd->prepare('SELECT ID FROM ' . $table . ' WHERE ' . $compare_tool . ' = :name;');
     $result->execute(array("name" => $name));
     $result->fetch();
     foreach ($result as $id) return $id;
@@ -36,7 +30,7 @@ function find_id_by_stmt($table, $name, $compare_tool) {
 function count_sql($table) {
 	$dbh = db_connect(); #DATABASE CONNEXION
 
-	$dossier = $dbh->query("SELECT COUNT(*) FROM $table")->fetch();
+	$dossier = $dbh->query('SELECT COUNT(*) FROM ' . $table)->fetch();
 	foreach ($dossier as $count) return $count;
 }
 
@@ -52,20 +46,20 @@ function add_extract($name, $difficulty, $type, $artist, $cover, $mp3, $categori
 	# TABLE - SAMPLES TYPE ---------------------------------
 	$sql = "INSERT INTO ASSOCIATIONS (EXTRACT_ID, CATEGORY_ID) VALUES (?, ?)";
 	$stmt = $dbh->prepare($sql);
-	$stmt->execute([/*count_sql('SAMPLES')*/0, find_id_by_stmt('CATEGORIES', $type, 'NAME')]);
+	$stmt->execute([ count_sql('SAMPLES'), find_id_by_stmt('CATEGORIES', $type, 'NAME') ]);
 
 	# TABLE - SAMPLES SUB-CATEGORIES -----------------------
 	for ($i = 0; $i <= strlen($categories); $i++) {
 		$sql = "INSERT INTO ASSOCIATIONS (EXTRACT_ID, SUBCATEGORY_ID) VALUES (?, ?)";
 		$stmt = $dbh->prepare($sql);
-		$stmt->execute([/*count_sql("ASSOCIATIONS")*/ 0, $categories[$i]]);
+		$stmt->execute([ count_sql("ASSOCIATIONS"), $categories[$i] ]);
 	}
 
 	# TABLE - SAMPLES ARTIST -------------------------------
 	for ($i = 0; $i <= strlen($artist); $i++) {
 		$sql = "INSERT INTO SAMPLES_ARTISTS (EXTRACT, ARTIST) VALUES (?, ?)";
 		$stmt = $dbh->prepare($sql);
-		$stmt->execute([count_sql('SAMPLES'), find_id_by_stmt('ARTISTS', $artist, 'NAME')]);
+		$stmt->execute([ count_sql('SAMPLES'), find_id_by_stmt('ARTISTS', $artist, 'NAME') ]);
 	}
 }
 
