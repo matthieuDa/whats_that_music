@@ -44,8 +44,59 @@
 	<!-- jQuery JS -->
 	<script src="jquery-3.4.1.min.js"></script>
 
+	<!-- Perso JavaScript -->
+	<script type="text/javascript">
+		/*
+		// QUERY like PHP ----------------------------------
+		function $_GET(param) {
+            var vars = {};
+            window.location.href.replace(location.hash, '').replace(
+                /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+                function (m, key, value) {  // callback
+                    vars[key] = value !== undefined ? value : '';
+                }
+            );
+
+            if (param) return vars[param] ? vars[param] : null;
+            return vars;
+        }
+        var $_GET = $_GET();
+
+        // QUERY SPLITTING ---------------------------------
+       	query  = $_GET['id'].split("-");
+       	action = query[0];
+       	id 	   = query[1];
+
+       	// DISPLAY / HIDE ----------------------------------
+        if (action = 'sample') {
+			//document.getElementById('home')    .style.display = 'block';
+            //document.getElementById('samples') .style.display = 'none';
+        } else if (action = 'artist') {
+			//document.getElementById('home')    .style.display = 'block';
+            //document.getElementById('samples') .style.display = 'none';
+        }*/
+	</script>
+
   	<!-- Perso PHP -->
-	<?php include './../execute.php'; ?>
+	<?php
+		include './display.php';
+		//include './app.php';
+
+		// GET QUERY -----------------------------
+		$id  	= $_GET['id'];
+		$query  = explode("-", $id);
+		$action = $query[0];
+		$ID  	= $query[1];
+
+		if ($action = 'sample') {
+			$sample_infos = sample_infos($ID);
+		}
+
+		//$artist 		= find_artist($ID);
+		//$title 		= "Let's Dance";
+		//$difficulty 	= 2;
+		//$cover_link 	= 'www.google.com/img/3557634';
+	?>
 </head>
 
 <body>
@@ -87,7 +138,7 @@
 	  	<div class="form-row">
 	    	<div class="col-md-4 mb-3">
 	    		<label for="validationCustom01">Name *</label>
-	    		<input type="text" class="form-control" id="validationCustom01" placeholder="ex : Let's dance" value="Let's dance" required>
+	    		<input type="text" class="form-control" id="validationCustom01" placeholder="ex : Let's dance" value="<?php echo $sample_infos['SAMPLE_NAME']; ?>" required>
 	    		<div class="valid-feedback">Okay !</div>
 	    	</div>
 
@@ -97,11 +148,11 @@
 				<input type="checkbox" id="new_artist" onclick="show_hide()"/>
 	      
 		      	<select class="custom-select" id="hidden_select">
-					<option>Select an artiste</option>
 					<option value="id">Elvis Presley</option>
 					<option value="id" selected>David Bowie</option>
 					<option value="id">Freddy Mercury</option>
 					<option value="id">Michael Jackson</option>
+					<?php //display_artists_selectinput(); ?>
 					<!-- Change to use DB -->
 				</select>
 	      		<div class="valid-feedback">Okay !</div>

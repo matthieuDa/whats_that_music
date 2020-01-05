@@ -51,19 +51,19 @@ function adding_new_extract() {
 	return false;
 	if (!empty($row['name']) && !empty($row['difficulty']) && !empty($row['type']) && !empty($row['artist ']) && !empty($row['cover ']) && !empty($row['mp3']) && !empty($row['categories']))
 		return add_extract($row);
-} //adding_new_extract();
+} // adding_new_extract();
 
 /* function test() {
 	echo '<h1>Test ok.</h1>';
 } */
 # ---| FONCTION DE TEST |-------------------------------------------------------
 function test_create_extract() {
-	add_extract("Let's dance", 1, 'musique', 'David Bowie', 'https://p8.storage.canalblog.com/82/14/636073/119838918_o.jpg', 'lets_dance_Dbowie', ['1980', 'disco', 'rock', 'pop']);
-} // test_create_extract();
+	add_extract("Life on mars", 1, 'musique', 'David Bowie', 'https://p8.storage.canalblog.com/82/14/636073/119838918_o.jpg', 'life_on_mars_Dbowie', ['1980', 'disco', 'rock', 'pop']);
+} //test_create_extract();
 
 function test_add_element() {
-	add_element('Rom1', 'ARTISTS');
-} // test_add_element();
+	add_element('Indila', 'ARTISTS');
+} test_add_element();
 
 function test_delete_element() {
 	delete_element('5', 'ARTISTS');
