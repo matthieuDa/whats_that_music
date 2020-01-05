@@ -116,6 +116,15 @@
             margin-bottom   : 5em           ; 
         }
 
+        label, .categories {
+            background-color: #F86141       ;
+            border          : 1px solid     ;
+            border-color    : #F9785D       ;
+            color           : white         ; 
+            padding         : .375rem .75rem;
+            border-radius   : 1em           ;
+        }
+
         .fa-swatchbook {
             color           : #E54040       ;
         }

@@ -18,19 +18,34 @@
 	<style type="text/css">
 		.return_to_game { 	position 		: absolute	;
 							right 			: 1em		; }
+
 		h3				{	padding-bottom 	: 1em 		;
 							text-align 		: center 	; }
+
 		h5				{	padding-bottom 	: 1em		; }
+
 		.search 		{	max-width 		: 17em		;
 							position 		: absolute	; 
 							right 			: 1em 		;
 							top 			: 5em 		; }
+
 		.search_label 	{	position 		: absolute 	; 
 							right 			: 5em       ; }
+
 		.card_margin_bt {	margin-bottom 	: 5em 		; }
+
 		/* .card_attachement { position 		: absolute	; 
 							right 			: 5em		;
 							margin-bottom 	: 5em		; } */ 
+
+		.categories 	{	background-color: #F86141       ;
+            				border          : 1px solid     ;
+            				border-color    : #F9785D       ;
+            				color           : white         ; 
+            				padding         : .375rem .75rem;
+            				border-radius   : 100em         ;
+            				margin 			: .15rem 		;
+            				cursor 			: pointer 		; }
 	</style>
 
 	<!-- Bootstrap CSS -->
@@ -90,6 +105,13 @@
 
 		if ($action = 'sample') {
 			$sample_infos = sample_infos($ID);
+			$categories   = $sample_infos['CATEGORIES'];
+		}
+
+		function display_categories($categories) {
+			foreach ($categories as $category) { 
+				echo('<label class="categories" id="subcategory-' . $category['ID'] . '" onclick="AJAX_delete">' . $category['NAME'] . '</label>');
+			}
 		}
 
 		//$artist 		= find_artist($ID);
@@ -206,6 +228,15 @@
 		      		<div class="invalid-feedback">Please select a valid state.</div>
 	      		</div>
 	    	</div>
+	  	</div>
+
+	  	<div class="form-row">
+	  		<div class="col">
+	  			<label>Categories</label></br>
+	  			<?php display_categories($categories); ?>
+	  			<label class="categories">Add categories <i style="margin-left: .1rem" class="fas fa-plus"></i></label>
+	  			</br>
+	  		</div>
 	  	</div>
 	  	<button class="btn btn-primary" type="submit">Submit form</button>
 	</form>
