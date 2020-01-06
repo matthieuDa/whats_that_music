@@ -288,4 +288,26 @@ function categories_by_sampleID($sample_id) {
 	return $categories;*/
 }
 
+function categories_to_add_by_sampleID($sample_id) {
+	$dbh = db_connect(); #DATABASE CONNEXION
+
+	$stmt = $dbh->query
+	("	SELECT 	SUBCATEGORIES.ID 		AS 'ID', 
+				SUBCATEGORIES.NAME 		AS 'NAME'
+		FROM SUBCATEGORIES
+		JOIN ASSOCIATION
+		ON ASSOCIATION.SUBCATEGORY_ID != SUBCATEGORIES.ID
+		JOIN SAMPLES
+		ON ASSOCIATION.EXTRACT_ID = SAMPLES.ID
+		WHERE EXTRACT_ID = $sample_id
+	");
+
+	$categories = [];
+	while ($data = $stmt->fetch()) {
+		array_push($categories, ['ID' => $data['ID'], 'NAME' => $data['NAME']]);
+	}
+
+	return $categories;
+};
+
 ?>

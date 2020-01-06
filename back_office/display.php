@@ -146,4 +146,13 @@ function display_artists() {
 	}
 };
 
+function display_subcategories_to_add($sample_id) {
+	// Affiche les catégories non ajoutées au titre
+	$categories = categories_to_add_by_sample_id($sample_id);
+	foreach ($categories as $category) { 
+		echo('<a class="dropdown-item" href="#" id="subcategory-' . $category['ID'] . '" onclick="AJAX_delete">' . $category['NAME'] . '</a>');
+	}
+}
+
+
 ?>

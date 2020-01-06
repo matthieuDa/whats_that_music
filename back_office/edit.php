@@ -15,7 +15,11 @@
 	<!-- FontAwesome CSS -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+	<!-- Font - Roboto -->
+<link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto:900i&display=swap" rel="stylesheet">
+
 	<style type="text/css">
+
 		.return_to_game { 	position 		: absolute	;
 							right 			: 1em		; }
 
@@ -38,29 +42,41 @@
 							right 			: 5em		;
 							margin-bottom 	: 5em		; } */ 
 
-		.categories 	{	background-color: #F86141       ;
-            				border          : 1px solid     ;
-            				border-color    : #F9785D       ;
-            				color           : white         ; 
-            				padding         : .375rem .75rem;
-            				border-radius   : 100em         ;
-            				margin 			: .15rem 		;
-            				cursor 			: pointer 		; }
+		.categories 	{	background-color: #F86141        		;
+            				border          : 1px solid      		;
+            				border-color    : #F9785D        		;
+            				color           : white          		; 
+            				padding         : .375rem .75rem 		;
+            				border-radius   : 100em          		;
+            				margin 			: .15rem 		 		;
+            				cursor 			: pointer 		 		;
+            				box-shadow 		: 1px 1px 3px #555 	; }
 	</style>
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 	<!-- Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
+			crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
+			crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
+			crossorigin="anonymous"></script>
 
 	<!-- jQuery JS -->
 	<script src="jquery-3.4.1.min.js"></script>
 
+
+
 	<!-- Perso JavaScript -->
 	<script type="text/javascript">
+
+		if (empty($_GET['add'])) 	  the_function($_GET['add']);
+		else if (empty($_GET['add'])) the_function($_GET['add']);
 		/*
 		// QUERY like PHP ----------------------------------
 		function $_GET(param) {
@@ -106,11 +122,18 @@
 		if ($action = 'sample') {
 			$sample_infos = sample_infos($ID);
 			$categories   = $sample_infos['CATEGORIES'];
-		}
 
-		function display_categories($categories) {
-			foreach ($categories as $category) { 
-				echo('<label class="categories" id="subcategory-' . $category['ID'] . '" onclick="AJAX_delete">' . $category['NAME'] . '</label>');
+			function display_categories($categories) {
+				foreach ($categories as $category) { 
+					echo('<label class="categories" id="subcategory-' . $category['ID'] . '" onclick="AJAX_delete_subcategory(' . $category['ID'] . ')" title="Click to delete">' . $category['NAME'] . ' <i class="fas fa-minus-square"></i></label>');
+				}
+			}
+
+			function display_categories_to_add($ID) {
+				$categories = categories_to_add_by_sampleID($ID);
+				foreach ($categories as $category) { 
+					echo('<label class="categories" id="subcategory-' . $category['ID'] . '" onclick="AJAX_add_subcategory(' . $category['ID'] . ')" title="Click to add">' . $category['NAME'] . ' <i class="fas fa-plus-square"></i></label>' . "\n\t\t\t\t\t\t");
+				}
 			}
 		}
 
@@ -156,7 +179,7 @@
 	<div class="container" style="margin-top: 3em">
 
 	<h5>Complete this form to edit the sample.</h5>
-	<form class="needs-validation" novalidate>
+	<form class="needs-validation card_margin_bt" novalidate>
 	  	<div class="form-row">
 	    	<div class="col-md-4 mb-3">
 	    		<label for="validationCustom01">Name *</label>
@@ -234,7 +257,16 @@
 	  		<div class="col">
 	  			<label>Categories</label></br>
 	  			<?php display_categories($categories); ?>
-	  			<label class="categories">Add categories <i style="margin-left: .1rem" class="fas fa-plus"></i></label>
+
+				<div class="dropdown">
+					<button class="categories" data-toggle="dropdown">
+						Add categories <i style="margin-left: .1rem" class="fas fa-plus"></i>
+					</button>
+
+					<div class="dropdown-menu" style="border: none; background-color: transparent;" aria-labelledby="dropdownMenuLink">
+						<?php display_categories_to_add($ID); //a faire ?>
+					</div>
+				</div>
 	  			</br>
 	  		</div>
 	  	</div>
@@ -243,6 +275,38 @@
 	</div>
 
 	<script>
+
+	// ---| AJAX - Categories |-----------------------------
+	function AJAX_delete_subcategory(category_id) {
+
+        $.ajax( {
+            url      : 'edit.php'     	 		, // target file
+            type     : 'GET'             		, // req type
+            dataType : 'html'            		, // type of return data expected
+            data     : 'delete=' + category_id  , // data sent (same as GET request)
+
+            success  : function(code_html, statut) { $(code_html).appendTo("#display_samples"); },
+            error    : function(resultat , statut, erreur) {},
+            complete : function(resultat , statut) {}
+        });    
+    }
+
+    function AJAX_add_subcategory(category_id) {
+        $("#test12345").click(function() {    
+            //var search = #.(search).val; // faux mais pour l'exemple  
+            var search = "Let's";
+            $.ajax( {
+                url      : 'AJAX.php'     	, // target file
+                type     : 'GET'             	, // req type
+                dataType : 'html'            	, // type of return data expected
+                data     : 'add=' + category_id	, // data sent (same as GET request)
+
+                success  : function(code_html, statut) { $(code_html).appendTo("#display_samples"); },
+                error    : function(resultat , statut, erreur) {},
+                complete : function(resultat , statut) {}
+            });    
+        });
+    }
 
 	// Example starter JavaScript for disabling form submissions if there are invalid fields
 	(function() {

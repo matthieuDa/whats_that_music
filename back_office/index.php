@@ -116,7 +116,7 @@
             margin-bottom   : 5em           ; 
         }
 
-        label, .categories {
+        .categories {
             background-color: #F86141       ;
             border          : 1px solid     ;
             border-color    : #F9785D       ;
