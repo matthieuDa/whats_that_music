@@ -143,6 +143,14 @@
         
     </style>
 
+     <!-- Perso PHP -->
+    <?php
+        include './display.php';
+
+        // NO AJAX -----------
+        if (isset($_GET['add']) || isset($_GET['delete']));
+    ?>
+
     <script>
         function show_hide_new_artist() {
             if (document.getElementById('new_artist').checked) {
@@ -208,12 +216,9 @@
         }
 
         var $_GET = $_GET();
-    </script>
 
-    <!-- Perso PHP -->
-    <?php
-        include './display.php';
-    ?>
+        document.getElementById('display_samples').appendChild(display_samples(''));
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -392,7 +397,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card margin-bt5">
+            <div class="card margin-bt5" id="yass">
                 <div class="card-header" id="headingTwo">
                     <h2 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
@@ -410,9 +415,6 @@
                                name="search" placeholder="ex : David Bowie">
                         <ul class="list-group z1">
                         </ul>
-                        <div class="list-group" id="display_samples">
-                            <!-- <a href="#" class="card_attachement"><i class="fas fa-times fa-2x"></i></a> -->
-                        </div>
 
                         <!---| FORM 2 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->
                     </div>
@@ -633,8 +635,53 @@
     if      ($_GET['action'] == 'new_sample')       document.getElementById('add_ok') .style.display = 'block';
     else if ($_GET['action'] == 'new_sample_error') document.getElementById('add_bad').style.display = 'block';
 
-    function AJAX_display_samples() {
-        $("#test12345").click(function() {    
+    function yacine() {
+        $samples_db = data_from_SAMPLES ();         // Table contenant l'ID, le nom et le niveau de difficulté des extraits
+    $assoc_db   = data_from_ASSOC   ();         // Table d'association artistes & extraits
+    $artists_db = data_from_ARTISTS ();         // Table contenant les noms des artistes
+    
+    $nb_samples = count_sql('SAMPLES');         // Retourne le nombre d'extraits enregistrés dans la base de donnée
+    $nb_assoc   = count_sql('SAMPLES_ARTISTS'); // Retourne le nombre d'associations de categories enregistrés dans la base de donnée
+
+    $artist_name    = "David Bowie";
+    $category_name  = "Musique";
+    $subcategories  = ['Pop', 'Rock'];
+    $yacine = "";
+    for ($i = 0; $i < $nb_samples; $i++) { 
+        $sample = $samples_db[$i];
+
+        // ---| TESTS SEARCH |--------------------
+        $t_search        = !isset ($search)                  ;
+        $t_ID            = stristr($sample['ID']   , $search);
+        $t_NAME          = stristr($sample['NAME'] , $search);
+        $t_ARTIST        = stristr($artist['NAME'] , $search);
+        $t_TYPE          = stristr($category_name  , $search);
+        $t_SUBCATEGORIES = stristr($subcategories  , $search);
+
+        if ($t_search || $t_ID || $t_NAME || $t_ARTIST || $t_TYPE || $t_SUBCATEGORIES) {
+            $artist = find_artist($sample['ID']);
+            if ($artist == false) $artist['NAME'] = 'Error';
+            
+            /*echo('<a href="./edit.php?id=sample-' . $sample['ID'] . '" name="' . $sample['NAME'] . '" id="sample-' . $sample['ID'] . '" class="list-group-item list-group-item-action search_samples">');
+            echo('<div class="d-flex w-100 justify-content-between">');
+            echo('<h5 class="mb-1 search_samples">' . $sample['NAME'] . '</h5>');
+            echo('<small  class="text-muted">' . $sample['ID'] . '</small>');
+            echo('</div>');
+            echo('<p class="mb-1">' . $artist['NAME'] . '</p>');
+            echo('<small class="text-muted">' . $category_name . ', ' . display_subcategories($subcategories) . '.</small>');
+            echo('</a>');*/
+
+            $yacine +='<a href="./edit.php?id=sample-' . $sample["ID"] . ' name="' . $sample["NAME"] . '" id="sample-' . $sample["ID"] . '" class="list-group-item list-group-item-action search_samples"><div class="d-flex w-100 justify-content-between"><h5 class="mb-1 search_samples">' . $sample["NAME"] . '</h5><small  class="text-muted">' . $sample["ID"] . '</small></div><p class="mb-1">' . $artist["NAME"] . '</p><small class="text-muted">' . $category_name . ', ' . display_subcategories($subcategories) . '.</small></a>';
+        }
+    }
+        /*var letextduhref;
+        var href = document.createTextNode(letextduhref);
+        var lea = document.createElement("a");
+        lea.setAttribue("href", lehref);
+        document.getElementById('yass').appendChild();*/
+    }
+    /*function AJAX_display_samples() {
+        $("#search_sample").click(function() {    
             //var search = #.(search).val; // faux mais pour l'exemple  
             var search = "Let's";
             $.ajax( {
@@ -643,12 +690,16 @@
                 dataType : 'html'            , // type of return data expected
                 data     : 'search=' + search, // data sent (same as GET request)
 
-                success  : function(code_html, statut) { $(code_html).appendTo("#display_samples"); },
+                success  : yacine,
+                //success  : function(code_html, statut) { $('<p>code_html</p>').appendTo("#display_samples"); },
                 error    : function(resultat , statut, erreur) {},
                 complete : function(resultat , statut) {}
             });    
         });
-    }
+
+        function yacine(){
+            $(display_samples).appendTo('#display_samples');
+        }*/
 
 </script>
 </body>

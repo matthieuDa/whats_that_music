@@ -2,13 +2,22 @@
 
 include './app.php';
 
-if (empty($_GET['search'])) {
+if (empty($_GET['search']) && isset($_GET['search'])) {
 	display_samples($_GET['search']);
 }
 
 function display_artists_selectinput() {
 	echo '<option value="id">Michael Jackson</option>';
 };
+
+function display_subcategories($subcategories) {
+        $subcategories = '';
+        foreach ($subcategories as $item) {
+        	$subcategories .= $item . ', ';
+            array_push($subcategories, $item, ', ');
+        }
+        return $subcategories;
+    }
 
 function display_samples($search) {
     include './../../back_office/app.php';
@@ -36,15 +45,6 @@ function display_samples($search) {
     $category_name  = "Musique";
     $subcategories  = ['Pop', 'Rock'];
 
-    function display_subcategories($subcategories) {
-        $subcategories = '';
-        foreach ($subcategories as $item) {
-        	$subcategories .= $item . ', ';
-            array_push($subcategories, $item, ', ');
-        }
-        return $subcategories;
-    }
-
     for ($i = 0; $i < $nb_samples; $i++) { 
         $sample = $samples_db[$i];
 
@@ -60,16 +60,20 @@ function display_samples($search) {
 	        $artist = find_artist($sample['ID']);
 	        if ($artist == false) $artist['NAME'] = 'Error';
 	        
-	        echo('<a href="./edit.php?id=sample-' . $sample['ID'] . '" name="' . $sample['NAME'] . '" id="sample-' . $sample['ID'] . '" class="list-group-item list-group-item-action search_samples">');
+	        /*echo('<a href="./edit.php?id=sample-' . $sample['ID'] . '" name="' . $sample['NAME'] . '" id="sample-' . $sample['ID'] . '" class="list-group-item list-group-item-action search_samples">');
 	        echo('<div class="d-flex w-100 justify-content-between">');
 	        echo('<h5 class="mb-1 search_samples">' . $sample['NAME'] . '</h5>');
 	        echo('<small  class="text-muted">' . $sample['ID'] . '</small>');
 	        echo('</div>');
 	        echo('<p class="mb-1">' . $artist['NAME'] . '</p>');
 	        echo('<small class="text-muted">' . $category_name . ', ' . display_subcategories($subcategories) . '.</small>');
-	        echo('</a>');
+	        echo('</a>');*/
+
+	        $yacine ='<a href="./edit.php?id=sample-' . $sample["ID"] . ' name="' . $sample["NAME"] . '" id="sample-' . $sample["ID"] . '" class="list-group-item list-group-item-action search_samples"><div class="d-flex w-100 justify-content-between"><h5 class="mb-1 search_samples">' . $sample["NAME"] . '</h5><small  class="text-muted">' . $sample["ID"] . '</small></div><p class="mb-1">' . $artist["NAME"] . '</p><small class="text-muted">' . $category_name . ', ' . display_subcategories($subcategories) . '.</small></a>';
 	    }
     }
+
+    return $yacine;
 }
 
 function AAAdisplay_samples() {
