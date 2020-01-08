@@ -1,0 +1,106 @@
+h3 {
+    padding-bottom: 1em !important ;
+    text-align: center !important ;
+}
+
+h4 {
+    text-align: center !important ;
+}
+
+h5 {
+    padding-bottom: 1em !important ;
+}
+
+li {
+    display: inline-block !important ;
+}
+
+#return_to_game {
+    position: absolute;
+    right: 1em;
+}
+
+.icons {
+    margin-right: 3em; !important;
+    /*text-shadow: -2px -2px 1px #2E7B7C;*/
+    text-shadow: black 5px 5px 1px, black 5px 5px 1px, black 5px  5px 1px, black 5px 5px 1px;
+}
+
+.icons_text {
+    font-size: xx-large;
+    /*text-shadow: -1px -1px 1px #2E7B7C ;
+    text-shadow: #2E7B7C 1px 1px, #2E7B7C -1px 1px, #2E7B7C -1px -1px, #2E7B7C 1px -1px !important;*/
+    text-shadow: none;
+    font-weight: bold;
+}
+
+.fa-8x {
+    margin-bottom: 2rem;
+}
+
+.search {
+    max-width: 17em !important ;
+    position: absolute !important ;
+    right: 1em !important ;
+    top: 5em !important ;
+}
+
+.search_label {
+    position: absolute !important ;
+    right: 5em !important ;
+}
+
+.margin-bt5 {
+    margin-bottom: 5em !important ;
+}
+
+.margin-bt2 {
+    margin-bottom: 2em !important ;
+}
+
+.margin-bt-sm {
+    margin-bottom: 5% !important ;
+}
+
+.ft-sz2 {
+    font-size: 2em !important ;
+}
+
+/* .card_attachement {
+        position        : absolute       !important ;
+        right           : 5em            !important ;
+        margin-bottom   : 5em            !important ;
+    } */
+
+.cursor {
+    cursor              : pointer !important ;
+}
+
+.post: hover a {
+    color               : #cc04c2 !important ;
+    background-color    : black !important ;
+}
+
+.jumbotron {
+    background-color    : #2e7c7c !important ;
+    color               : white !important ;
+    border-radius       : unset !important ;
+}
+
+.container {
+    margin-top          : 3em !important ;
+    margin-bottom       : 5em !important ;
+}
+
+.categories {
+    background-color    : #F86141 !important ;
+    border              : 1 px solid !important ;
+    border-color        : #F9785D !important ;
+    color               : white !important ;
+    padding             : .375rem .75rem !important ;
+    border-radius       : 1em !important ;
+}
+
+.fa-swatchbook   {color : #65686E;}
+.fa-compact-disc {color : #65686E;}
+.fa-guitar       {color : #65686E;} 

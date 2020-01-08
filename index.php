@@ -86,7 +86,9 @@
 
 		//if (find = false) {
 			document.getElementById('subcategories').value = subcat_list.join();
-			document.getElementById('subcats').append("<h1>OwO</h1>");//'<label class="categories" value="' + name + '§' + id + '" onclick="remove_subcat(this.value);">' + name + '</label>');
+			// document.getElementById('subcats').append("<label class=\"categories\" value=\"" + name + "§" + id + "\" onclick=\"remove_subcat(this.value);\">" + name + "</label>");
+			// document.getElementById('subcats').append('<label class="categories" value="' + name + '§' + id + '" onclick="remove_subcat(this.value);">' + name + '</label>');
+			document.getElementById('subcats').append(\<label class='categories' value= name + "§" + id + onclick=remove_subcat(this.value);> + name + <\/label>);
 		//}
 	};
 

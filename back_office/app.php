@@ -76,14 +76,34 @@ function add_extract($name, $difficulty, $type, $artist, $cover, $mp3, $categori
 }
 
 # ---| SQL - ADD CAT / SUB-CAT / ARTIST |--------------------------------------|	
-// $what = 'CATEGORIES' or 'SUB-CATEGORIES' or 'ARTISTS' but no 'EXTRACT'
+// $table = 'CATEGORIES' or 'SUB-CATEGORIES' or 'ARTISTS' but no 'EXTRACT'
 function add_element($name, $table) {
 	$dbh = db_connect(); #DATABASE CONNEXION
 
+	$name = strtolower($name); // ex: 'Pop' -> 'pop'
+
+	if (exist($name, $table) == 0) { // Test if the element already exist
+		# TABLE - CAT / SUB-CAT / ARTIST -----------------------
+		$sql = "INSERT INTO " . $table . " (NAME) VALUES (?)";
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute([$name]);
+	} else return false;
+}
+
+# ---| SQL - TEST IF ALREADY EXIST |-------------------------------------------|	
+function exist($name, $table) {
+	$dbh = db_connect(); #DATABASE CONNEXION
+
+	$name = strtolower($name); // ex: 'Pop' -> 'pop'
+
 	# TABLE - CAT / SUB-CAT / ARTIST -----------------------
-	$sql = "INSERT INTO " . $table . " (NAME) VALUES (?)";
+	$sql = "SELECT EXISTS( SELECT * FROM " . $table . " WHERE NAME = '" . $name . "')";
 	$stmt = $dbh->prepare($sql);
-	$stmt->execute([$name]);
+	$stmt->execute() or die(error);
+
+	foreach ($stmt as $variable) {
+		return($variable[0]);
+	}
 }
 
 # ---| SQL - DELETE ELEMENT |--------------------------------------------------|

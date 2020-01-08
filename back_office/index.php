@@ -8,15 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Radio button CSS ----------------------------------------------------->
+    <link rel="stylesheet" type="text/css" href="./view/CSS/index.css">
+
+    <!-- Perso CSS ------------------------------------------------------------>
     <link rel="stylesheet" type="text/css" href="./../view/CSS/radio.css">
 
     <!-- FontAwesome CSS ------------------------------------------------------>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous">
 
     <!-- Bootstrap CSS -------------------------------------------------------->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 
     <!-- Bootstrap JS --------------------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -29,119 +34,11 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
-    <!-- React JS ------------------------------------------------------------->
-    <script src="https://fb.me/react-0.14.3.js"></script>
-    <script src="https://fb.me/react-dom-0.14.3.js"></script>
+    <!-- Jquery JS ------------------------------------------------------------>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
-    <style type="text/css">
-        .return_to_game {
-            position        : absolute      ;
-            right           : 1em           ;
-             
-        }
-
-        body {
-            background-color: #E5FCFF       ;
-        }
-
-        h3 {
-            padding-bottom  : 1em           ;
-            text-align      : center        ;
-        }
-
-        h4 {
-            text-align      : center        ;
-        }
-
-        h5 {
-            padding-bottom  : 1em           ;
-        }
-
-        li {
-            display         : inline-block  ;
-        }
-
-        .search {
-            max-width       : 17em          ;         
-            position        : absolute      ;
-            right           : 1em           ;
-            top             : 5em           ;
-        }
-
-        .search_label {
-            position        : absolute      ;
-            right           : 5em           ;
-        }
-
-        .margin-bt5 {
-            margin-bottom   : 5em           ;
-        }
-
-        .margin-bt2 {
-            margin-bottom   : 2em           ;
-        }
-
-        .margin-bt-sm {
-            margin-bottom   : 5%            ;
-        }
-
-        .ft-sz2 {
-            font-size       : 2em           ;
-        }
-
-        /* .card_attachement {
-            position 		: absolute		;
-            right 			: 5em			;
-            margin-bottom 	: 5em			;
-        } */
-
-        .cursor {
-            cursor          : pointer       ;
-        }
-
-        .post:hover a {
-            color           : #cc04c2       ;
-            background-color: black         ;
-        }
-
-        .jumbotron {
-            background-color: #2e7c7c       ;
-            color           : white         ;
-            border-radius   : unset         ;
-        }
-
-        .container {
-            margin-top      : 3em           ;
-            margin-bottom   : 5em           ; 
-        }
-
-        .categories {
-            background-color: #F86141       ;
-            border          : 1px solid     ;
-            border-color    : #F9785D       ;
-            color           : white         ; 
-            padding         : .375rem .75rem;
-            border-radius   : 1em           ;
-        }
-
-        .fa-swatchbook {
-            color           : #E54040       ;
-        }
-
-        .fa-compact-disc {
-            color           : #141414       ;
-        }
-
-        .fa-swatchbook {
-            color           : #E54040       ;
-        }
-
-        .fa-compact-disc {
-            color           : #141414       ;
-        }
-        
-    </style>
+    <!-- Perso JS ------------------------------------------------------------->
+    <script type="text/javascript" src="./js/index.js"></script>
 
      <!-- Perso PHP -->
     <?php
@@ -162,95 +59,62 @@
             }
         }
 
-        function page_manager_home() {
-            document.getElementById('home')         .style.display = 'block';
-            document.getElementById('samples')      .style.display = 'none';
-            document.getElementById('categories')   .style.display = 'none';
-            document.getElementById('artists')      .style.display = 'none';
-            document.getElementById('albums')       .style.display = 'none';
-        }
-
-        function page_manager_samples() {
-            document.getElementById('home')         .style.display = 'none';
-            document.getElementById('samples')      .style.display = 'block';
-            document.getElementById('categories')   .style.display = 'none';
-            document.getElementById('artists')      .style.display = 'none';
-            document.getElementById('albums')       .style.display = 'none';
-        }
-
-        function page_manager_categories() {
-            document.getElementById('home')         .style.display = 'none';
-            document.getElementById('samples')      .style.display = 'none';
-            document.getElementById('categories')   .style.display = 'block';
-            document.getElementById('artists')      .style.display = 'none';
-            document.getElementById('albums')       .style.display = 'none';
-        }   
-
-        function page_manager_artists() {
-            document.getElementById('home')         .style.display = 'none';
-            document.getElementById('samples')      .style.display = 'none';
-            document.getElementById('categories')   .style.display = 'none';
-            document.getElementById('artists')      .style.display = 'block';
-            document.getElementById('albums')       .style.display = 'none';
-        }
-
-        function page_manager_albums() {
-            document.getElementById('home')         .style.display = 'none';
-            document.getElementById('samples')      .style.display = 'none';
-            document.getElementById('categories')   .style.display = 'none';
-            document.getElementById('artists')      .style.display = 'none';
-            document.getElementById('albums')       .style.display = 'block';
-        }
-
-        function $_GET(param) {
-            var vars = {};
-            window.location.href.replace(location.hash, '').replace(
-                /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-                function (m, key, value) {  // callback
-                    vars[key] = value !== undefined ? value : '';
-                }
-            );
-
-            if (param) return vars[param] ? vars[param] : null;
-            return vars;
-        }
-
-        var $_GET = $_GET();
-
-        document.getElementById('display_samples').appendChild(display_samples(''));
+        // document.getElementById('display_samples').appendChild(display_samples(''));
     </script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="./"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <a class="navbar-brand cursor" onclick="page_manager('home');"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link cursor" onclick="page_manager_samples()">Samples <span
-                            class="sr-only">(current)</span></a>
+                <a class="nav-link cursor" value="samples" onclick="page_manager('samples');">Samples <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link cursor" onclick="page_manager_categories()">Categories <span class="sr-only">(current)</span></a>
+                <a class="nav-link cursor" value="categories" onclick="page_manager('categories');">Categories <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link cursor" onclick="page_manager_artists()">Artists <span
-                            class="sr-only">(current)</span></a>
+                <a class="nav-link cursor" value="artists" onclick="page_manager('artists');">Artists <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled cursor" onclick="page_manager_albums()">Albums <span class="sr-only">(current)</span></a>
+                <a class="nav-link disabled cursor" value="albums" onclick="page_manager('albums');">Albums <span class="sr-only">(current)</span></a>
             </li>
             <li>
-                <a class="btn btn-primary return_to_game" href="./../" tabindex="-1" aria-disabled="true">What's that
-                    music ?!</a>
+                <a class="btn btn-primary" id="return_to_game" href="./../" tabindex="-1" aria-disabled="true">What's that music ?!</a>
             </li>
         </ul>
     </div>
 </nav>
+
+<div id="tmp"><!-- Affichage éléments gràce à Ajax - Résultats des fonctions --></div>
+
+<div id="error" style="display: none;">
+    <div class="jumbotron" value="home" onclick="page_manager('home');">
+        <h1 class="display-4">An error occured</h1>
+        <p class="lead">Apologies, a problem has occurred, please try again.</p>
+        <p>To start choose an element below.</p>
+    </div>
+
+    <div class="container">
+        <div class="row" style="padding: 5em;">
+            <div class="col-sm cursor icons" onclick="page_manager('samples');">
+                <h4><i class="fas fa-compact-disc fa-8x"></i></br><b class="icons_text">Samples</b></h4>
+            </div>
+            <div class="col-sm cursor icons" onclick="page_manager('categories');">
+                <h4><i class="fas fa-swatchbook fa-8x"></i></br><b class="icons_text">Categories</b></h4>
+            </div>
+            <div class="col-sm cursor icons" onclick="page_manager('artists');">
+                <h4><i class="fas fa-guitar fa-8x"></i></br><b class="icons_text">Artists</b></h4>
+            </div>          
+        </div>
+    </div>
+</div>
+
 <div id="home">
-    <div class="jumbotron" onclick="page_manager_home()">
+    <div class="jumbotron" value="home" onclick="page_manager('home');">
         <h1 class="display-4">What's that music ?!</h1>
         <p class="lead">Welcome on the dashboard, here you can add, edit or delete all the database elements.</p>
         <p>To start choose an element on the navbar.</p>
@@ -258,30 +122,15 @@
 
     <div class="container">
         <div class="row" style="padding: 5em;">
-            <div class="col-sm">
-                <h4>
-                    <i class="margin-bt-sm fas fa-compact-disc fa-7x"></i>
-                    Samples
-                </h4>
+            <div class="col-sm cursor icons" onclick="page_manager('samples');">
+                <h4><i class="fas fa-compact-disc fa-8x"></i></br><b class="icons_text">Samples</b></h4>
             </div>
-            <div class="col-sm">
-                <h4>
-                    <i class="margin-bt-sm fas fa-swatchbook fa-7x"></i>
-                    Categories
-                </h4>
+            <div class="col-sm cursor icons" onclick="page_manager('categories');">
+                <h4><i class="fas fa-swatchbook fa-8x"></i></br><b class="icons_text">Categories</b></h4>
             </div>
-            <div class="col-sm">
-                <h4>
-                    <i class="margin-bt-sm fas fa-swatchbook fa-7x"></i>
-                    Artists
-                </h4>
+            <div class="col-sm cursor icons" onclick="page_manager('artists');">
+                <h4><i class="fas fa-guitar fa-8x"></i></br><b class="icons_text">Artists</b></h4>
             </div>          
-            <div class="col-sm">
-                <h4>
-                    <i class="margin-bt-sm fas fa-swatchbook fa-7x"></i>
-                    Albums
-                </h4>
-            </div>
         </div>
     </div>
 </div>
@@ -391,7 +240,8 @@
                                 </div>
                             </div>
                             </br>
-                            <button class="btn btn-primary" type="submit">Submit form</button>
+
+                            <button class="btn btn-primary" id="submit-new_sample" type="submit">Add the sample</button>
                         </form>
                         <!---| FORM 1 - End |-------------------------------------------------------------------------------| FORM 1 - End |--->
                     </div>
@@ -451,17 +301,31 @@
                     <div class="card-body">
                         <h5>Complete this form to add a new sample in the library.</h5>
 
-                        <form class="needs-validation" novalidate>
+                        <div>
+                            <h6>Type *</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="radio-cat" name="radio-new_category" value="CATEGORIES" checked>
+                                <label class="form-check-label" for="radio-cat">
+                                Category
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="radio-subcat" name="radio-new_category" value="SUBCATEGORIES">
+                                <label class="form-check-label" for="radio-subcat">
+                                Sub-category
+                                </label>
+                            </div></br>
+
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom01">Name *</label>
-                                    <input type="text" class="form-control" id="validationCustom01"
-                                           placeholder="ex : Let's dance" required>
+                                    <h6>Name *</h6>
+                                    <input type="text" class="form-control" id="new_category_name" placeholder="ex : Rock" required>
                                     <div class="valid-feedback">Okay !</div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">Submit form</button>
-                        </form>
+
+                            <button class="btn btn-primary" id="submit-new_category" onclick="submit_new_element();">New category</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -589,6 +453,7 @@
         </div>
     </div>
 </div>
+<div id="albums"></div>
 <h1 class="display-4" id="add_ok" style="display: none; margin: 1em;">Ajout effectué avec succès.</h1>
 <h1 class="display-4" id="add_bad" style="display: none; margin: 1em;">Erreur lors de l'ajout, veuillez rééssayer.</h1>
 
@@ -671,7 +536,7 @@
             echo('<small class="text-muted">' . $category_name . ', ' . display_subcategories($subcategories) . '.</small>');
             echo('</a>');*/
 
-            $yacine +='<a href="./edit.php?id=sample-' . $sample["ID"] . ' name="' . $sample["NAME"] . '" id="sample-' . $sample["ID"] . '" class="list-group-item list-group-item-action search_samples"><div class="d-flex w-100 justify-content-between"><h5 class="mb-1 search_samples">' . $sample["NAME"] . '</h5><small  class="text-muted">' . $sample["ID"] . '</small></div><p class="mb-1">' . $artist["NAME"] . '</p><small class="text-muted">' . $category_name . ', ' . display_subcategories($subcategories) . '.</small></a>';
+            //$yacine +='<a href="./edit.php?id=sample-' . $sample["ID"] . ' name="' . $sample["NAME"] . '" id="sample-' . $sample["ID"] . '" class="list-group-item list-group-item-action search_samples"><div class="d-flex w-100 justify-content-between"><h5 class="mb-1 search_samples">' . $sample["NAME"] . '</h5><small  class="text-muted">' . $sample["ID"] . '</small></div><p class="mb-1">' . $artist["NAME"] . '</p><small class="text-muted">' . $category_name . ', ' . display_subcategories($subcategories) . '.</small></a>';
         }
     }
         /*var letextduhref;
@@ -701,6 +566,7 @@
             $(display_samples).appendTo('#display_samples');
         }*/
 
+        
 </script>
 </body>
 </html>
